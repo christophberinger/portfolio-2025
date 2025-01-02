@@ -10,7 +10,7 @@
         </clipPath>
     </defs>
     <style>
-        svg { color: #000; }
+        svg { color: #111; }
         @media (prefers-color-scheme: dark) {
             svg { color: #FFF; }
         }
