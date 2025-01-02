@@ -1,0 +1,34 @@
+---
+interface Props {
+  title: string;
+  items: string[];
+}
+
+const { title, items } = Astro.props;
+---
+
+<div class="column">
+  <p>
+    <span class="soft title">{title}</span><br />
+    {items.map(item => (
+      <>{item}<br /></>
+    ))}
+  </p>
+</div>
+
+<style>
+  .column {
+    flex: 1;
+    margin: 0 1rem;
+  }
+  
+  .soft {
+    color: #666;
+  }
+  
+  .title {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+  }
+</style>

@@ -1,11 +1,122 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import Overview from '../components/Overview.astro';
+import Footer from '../components/Footer.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const deliverables = [
+  "Accessibility Consulting",
+  "Customer Journey Mapping",
+  "Design Systems",
+  "Experience Maps",
+  "Frontend Development",
+  "Hi-Fi Prototypes",
+  "Information Architecture",
+  "Interface Design",
+  "Personalization Strategy",
+  "Product Strategy",
+  "Project Assessment",
+  "Project Documentation",
+  "Project Management",
+  "User Journeys",
+  "User Research",
+  "User Stories",
+  "Usability Testing",
+  "UX Audits",
+  "UX Consulting",
+  "UX Research",
+  "UX Team Lead",
+  "UX Writing",
+  "Wireframes",
+  "Workshops"
+];
+
+const tools = [
+  "Confluence",
+  "CSS/SASS",
+  "Figma",
+  "Flinto",
+  "Framer",
+  "Git",
+  "HTML",
+  "Jira",
+  "JavaScript",
+  "Keynote",
+  "MS Office",
+  "PHP",
+  "Principle",
+  "React",
+  "Sketch",
+  "Slack",
+  "Visual Studio Code"
+];
+
+const brands = [
+  "Adidas",
+  "Audi",
+  "dm-drogerie markt",
+  "ebay",
+  "Escada",
+  "Hugo Boss",
+  "MAN",
+  "Mercedes AMG",
+  "PayPal",
+  "Porsche",
+  "Volkswagen",
+  "and many more"
+];
+
+const awards = [
+  "ADC*E Gold",
+  "Automotive Brand Contest Digital",
+  "iF DESIGN AWARD",
+  "Red Dot 'Best of the Best'",
+  "German Design Award Gold",
+  "Annual Multimedia Award Gold",
+  "Corporate Design Prize",
+  "Deutsche Designer Club Award",
+  "Art Directors Club, Germany",
+  "Deutscher Digital Award",
+  "Lovie Award Bronze"
+];
 ---
 
 <Layout>
-	<Welcome />
+  <div id="intro">
+    <p>👨‍💻</p>
+    <p>
+      <strong>
+        Hi, my name is Christoph. I'm a UX Professional, Product Designer
+        and Problem Solver.
+      </strong>
+    </p>
+    <p>
+      Since more than 12 years, I help companies of all sizes to think,
+      build and deliver great digital products.<br />
+      I know my tools and work plug & play in your team and project
+      structure.
+    </p>
+    <p>
+      If you want to hire me, use good old
+      <a href="mailto:c@beringer.io?Subject=Hello" title="Write me an email">
+        email
+      </a>, or contact me on
+      <a
+        href="http://de.linkedin.com/pub/christoph-beringer/6/137/3b2"
+        title="LinkedIn">
+        LinkedIn
+      </a>.
+    </p>
+  </div>
+
+  <div class="overview">
+    <Overview title="Deliverables" items={deliverables} />
+    <Overview title="Tools" items={tools} />
+  </div>
+
+  <div class="overview">
+    <Overview title="Brands" items={brands} />
+    <Overview title="Awards" items={awards} />
+  </div>
+
+  <Footer />
 </Layout>
