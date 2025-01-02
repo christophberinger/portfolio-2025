@@ -1,10 +1,12 @@
 ---
+import Header from '../components/Header.astro';
+
 interface Props {
   title?: string;
   description?: string;
 }
 
-const { 
+const {
   title = "Christoph Beringer - Freelance User Experience Architect, Interaction Designer",
   description = "UX Professional, Product Designer and Problem Solver with over 12 years of experience"
 } = Astro.props;
@@ -22,6 +24,7 @@ const {
   </head>
   <body>
     <div id="content" class="animate fadeInUp">
+      <Header />
       <slot />
     </div>
   </body>
