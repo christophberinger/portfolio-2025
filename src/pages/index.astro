@@ -1,112 +1,162 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Overview from "../components/Overview.astro";
+import DeliverablesGrid from "../components/DeliverablesGrid.astro";
+import BrandLogos from "../components/BrandLogos.astro";
+import AnimatedText from "../components/AnimatedText.astro";
+import StickyContact from "../components/StickyContact.astro";
+import ContactSection from "../components/ContactSection.astro";
 import Footer from "../components/Footer.astro";
 
-const deliverables = [
-  "Accessibility Consulting",
-  "Customer Journey Mapping",
-  "Design Systems",
-  "Experience Maps",
-  "Frontend Development",
-  "Prototypes",
-  "Information Architecture",
-  "Interface Design",
-  "Project Management",
-  "User Journeys",
-  "User Research",
-  "User Stories",
-  "Usability Testing",
-  "UX Audits",
-  "UX Consulting",
-  "UX Research",
-  "UX Team Lead",
-  "UX Writing",
-  "Visual Design",
-  "Wireframes",
-];
+const deliverables = {
+  "Strategy & Leadership": [
+    "UX & Product Strategy",
+    "AI Integration Strategy",
+    "Organizational Design for Automation",
+    "MarTech and Workflow Optimization",
+    "Project Audits & Opportunity Mapping",
+    "Team Enablement & Change Facilitation",
+    "UX Team Leadership & Mentoring",
+    "Cross-Functional Alignment Workshops",
+  ],
+  "Design & Research": [
+    "User Research & Experience Mapping",
+    "Information Architecture",
+    "User Journeys & User Stories",
+    "Design Systems & Component Libraries",
+    "Wireframes & Hi-Fidelity Prototypes",
+    "Usability Testing & Validation",
+    "Visual Design & Interaction Design",
+    "UX Writing & Microcopy",
+  ],
+  "Technology & Execution": [
+    "Frontend Development (HTML, CSS, JS, React)",
+    "AI Agent Design & Implementation",
+    "Rapid Prototyping (Code & No-Code)",
+    "Design–Dev Handoff & Documentation",
+    "Accessibility & Performance Optimization",
+    "System Integration for Smart Interfaces",
+  ],
+  "Process & Collaboration": [
+    "Agile Methodology & Sprint Planning",
+    "Project Scoping & Documentation",
+    "Cross-Team Collaboration",
+    "Stakeholder Workshops & Facilitation",
+    "Continuous Discovery & Iteration",
+  ],
+};
 
-const tools = [
-  "Confluence",
-  "CSS/SASS",
-  "Figma",
-  "Git",
-  "HTML",
-  "Jira",
-  "JavaScript",
-  "PHP",
-  "Rive",
-  "React",
-  "Unity",
-  "Visual Studio Code",
-];
+const tools =
+  "Agent frameworks · Automation workflows · Claude · Confluence · CSS/SASS · Docker · Figma · Git · GPT · HTML · JavaScript · Jira · LangChain · LLM APIs · Microsoft 365 (Excel, PowerPoint, Teams) · Notion · PHP · Power Platform (Power Automate, Power BI) · Prompt engineering · React · Rive · Slack · Storybook · Supabase  · TypeScript · Unity · Vector DBs · VS Code — and my brain.";
 
-const brands = [
-  "Adidas",
-  "Audi",
-  "dm-drogerie markt",
-  "ebay",
-  "Escada",
-  "Hugo Boss",
-  "MAN",
-  "Mercedes AMG",
-  "PayPal",
-  "Porsche",
-  "Volkswagen",
-  "and many more",
-];
-
-const awards = [
-  "ADC*E Gold",
-  "Automotive Brand Contest Digital",
-  "iF DESIGN AWARD",
-  "Red Dot 'Best of the Best'",
-  "German Design Award Gold",
-  "Annual Multimedia Award Gold",
-  "Corporate Design Prize",
-  "Deutsche Designer Club Award",
-  "Art Directors Club, Germany",
-  "Deutscher Digital Award",
-  "Lovie Award Bronze",
-];
+const awards =
+  "ADC*E Gold · Automotive Brand Contest Digital · iF DESIGN AWARD · Red Dot 'Best of the Best' · German Design Award Gold · Annual Multimedia Award Gold · Corporate Design Prize · Deutsche Designer Club Award · Art Directors Club, Germany · Deutscher Digital Award · Lovie Award Bronze";
 ---
 
 <Layout>
-  <div id="intro">
-    <h2>
-      <strong>
-        Hi, I’m Christoph — a Designer, Strategist, and Engineer specializing in
-        crafting exceptional digital user experiences.
-      </strong>
-    </h2>
-    <h2>
-      Since more than 15 years, I help companies of all sizes to think, build
-      and deliver great digital products.<br />
-      I know my tools and work plug & play in your team and project structure.
-    </h2>
-    <h3>
-      If you want to hire me, use good old
-      <a href="mailto:c@beringer.io?Subject=Hello" title="Write me an email">
-        email</a
-      >, or contact me on
-      <a
-        href="http://de.linkedin.com/pub/christoph-beringer/6/137/3b2"
-        title="LinkedIn"
-      >
-        LinkedIn
-      </a>.
-    </h3>
+  <div class="hero-section">
+    <AnimatedText class="name" delay={0} immediate={true}>
+      <p>Christoph Beringer · Freelance UX Leader & Technologist</p>
+    </AnimatedText>
+    <AnimatedText delay={300} immediate={true}>
+      <h1>Strategy, Design & Code <br />for the AI Age</h1>
+    </AnimatedText>
+    <AnimatedText
+      class="value-prop"
+      delay={600}
+      immediate={true}
+      highlight={[
+        "think better",
+        "build faster",
+        "adapt confidently",
+        "AI-shaped",
+        "systems-driven",
+      ]}
+    >
+      <p class="lead">
+        I help organizations think better, build faster, and adapt confidently.
+        With 20+ years at the intersection of design, engineering, and strategy,
+        I don't just shape products — I help transform digital capabilities to
+        thrive in an AI-shaped, systems-driven world.
+      </p>
+    </AnimatedText>
+  </div>
+
+  <section class="approach">
+    <AnimatedText>
+      <h2>Crafting Interfaces, Shaping Organizations</h2>
+    </AnimatedText>
+    <AnimatedText>
+      <p>
+        I design and build digital experiences — and the systems behind them.
+        That includes automation roadmaps, AI-informed org strategy, scalable
+        design systems, MarTech modernization, and agent-based workflows.
+      </p>
+    </AnimatedText>
+  </section>
+
+  <section class="track-record">
+    <AnimatedText>
+      <h2>Proven Impact</h2>
+    </AnimatedText>
+    <AnimatedText>
+      <p>
+        From startups to global brands, I've helped teams ship better products,
+        adopt smarter workflows, and prepare for what's next — with hands-on
+        execution and a strategic lens.
+      </p>
+    </AnimatedText>
+    <AnimatedText>
+      <p>
+        Whether I'm leading a UX engagement, coding prototypes, or consulting on
+        intelligent systems, I bring deep curiosity, cross-functional fluency,
+        and a strong bias for clarity and action.
+      </p>
+    </AnimatedText>
+  </section>
+
+  <div class="deliverables-section">
+    <AnimatedText>
+      <h3>Deliverables</h3>
+    </AnimatedText>
+    <DeliverablesGrid deliverables={deliverables} />
   </div>
 
   <div class="overview">
-    <Overview title="Deliverables" items={deliverables} />
-    <Overview title="Tools" items={tools} />
+    <div class="column">
+      <AnimatedText>
+        <h4>My Everyday Stack (and Then Some)</h4>
+      </AnimatedText>
+      <AnimatedText>
+        <div class="tools-content">{tools}</div>
+      </AnimatedText>
+    </div>
   </div>
+
+  <BrandLogos />
 
   <div class="overview">
-    <Overview title="Brands" items={brands} />
-    <Overview title="Awards" items={awards} />
+    <div class="column">
+      <AnimatedText>
+        <h4>Certified by People in Blazers</h4>
+      </AnimatedText>
+      <AnimatedText>
+        <div class="awards-content">{awards}</div>
+      </AnimatedText>
+    </div>
   </div>
 
+  <section class="cta-intro">
+    <AnimatedText highlight={["resilient", "ready for what's next"]}>
+      <p class="mission">
+        <strong
+          >Let's build something resilient — and ready for what's next.</strong
+        >
+      </p>
+    </AnimatedText>
+  </section>
+
+  <ContactSection />
+
+  <StickyContact />
   <Footer />
 </Layout>

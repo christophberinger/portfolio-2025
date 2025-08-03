@@ -1,0 +1,149 @@
+---
+interface Props {
+  class?: string;
+  delay?: number;
+  immediate?: boolean;
+  highlight?: string[];
+}
+
+const {
+  class: className = "",
+  delay = 0,
+  immediate = false,
+  highlight = [],
+} = Astro.props;
+---
+
+<div
+  class={`animated-text ${className}`}
+  data-animate-text
+  data-delay={delay}
+  data-immediate={immediate}
+  data-highlight={JSON.stringify(highlight)}
+>
+  <slot />
+</div>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  function initAnimatedTexts() {
+    const animatedTexts = document.querySelectorAll("[data-animate-text]");
+
+    animatedTexts.forEach((element) => {
+      const delay = parseInt(element.getAttribute("data-delay") || "0");
+      const immediate = element.getAttribute("data-immediate") === "true";
+      const highlightData = element.getAttribute("data-highlight");
+      const highlights = highlightData ? JSON.parse(highlightData) : [];
+
+      // Find the text element (could be h1, h2, p, etc.)
+      const textElement =
+        element.querySelector("h1, h2, h3, h4, p, span") || element;
+
+      if (!textElement.textContent) return;
+
+      // Clear any existing animations
+      gsap.killTweensOf(textElement);
+
+      // Split text into words and clean up whitespace
+      const text = textElement.textContent.trim();
+      const words = text.split(/\s+/).filter((word) => word.length > 0);
+      textElement.innerHTML = words
+        .map((word) => `<span class="word">${word}</span>`)
+        .join(" ");
+
+      const wordSpans = textElement.querySelectorAll(".word");
+
+      // Set initial state
+      gsap.set(wordSpans, {
+        opacity: 0,
+        y: 10,
+        scale: 0.9,
+      });
+
+      const animateWords = () => {
+        gsap.to(wordSpans, {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.5,
+          stagger: 0.1,
+          ease: "power2.out",
+          delay: delay / 1000,
+          onComplete: () => {
+            // Add highlights after animation
+            if (highlights.length > 0) {
+              setTimeout(() => {
+                highlights.forEach((phrase) => {
+                  const phraseRegex = new RegExp(`(${phrase})`, "gi");
+                  textElement.innerHTML = textElement.innerHTML.replace(
+                    phraseRegex,
+                    `<span class="highlight">$1</span>`
+                  );
+                });
+              }, 200);
+            }
+          },
+        });
+      };
+
+      if (immediate) {
+        // Animate immediately for above-the-fold content
+        setTimeout(animateWords, 100);
+      } else {
+        // Use ScrollTrigger for content below the fold
+        ScrollTrigger.create({
+          trigger: element,
+          start: "top 85%",
+          onEnter: animateWords,
+          once: true,
+        });
+      }
+    });
+  }
+
+  // Initialize when DOM is ready
+  setTimeout(initAnimatedTexts, 100);
+
+  // Handle Astro page transitions
+  document.addEventListener("astro:page-load", () => {
+    setTimeout(initAnimatedTexts, 100);
+  });
+</script>
+
+<style>
+  .animated-text .word {
+    display: flex;
+    margin-right: 0.25em;
+  }
+
+  .animated-text .highlight {
+    background: linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.05)
+    );
+    border-radius: 3px;
+    padding: 0 2px;
+    transition: all 0.3s ease;
+  }
+
+  .animated-text .highlight:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+    transform: scale(1.05);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animated-text .word {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+
+    .animated-text .highlight {
+      background: rgba(255, 255, 255, 0.1) !important;
+    }
+  }
+</style>

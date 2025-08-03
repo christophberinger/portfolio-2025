@@ -1,7 +1,7 @@
 ---
 interface Props {
   title: string;
-  items: string[];
+  items: string[] | string;
 }
 
 const { title, items } = Astro.props;
@@ -10,12 +10,16 @@ const { title, items } = Astro.props;
 <div class="column">
   <h4>{title}</h4>
   {
-    items.map((item) => (
-      <>
-        {item}
-        <br />
-      </>
-    ))
+    Array.isArray(items) ? (
+      items.map((item) => (
+        <>
+          {item}
+          <br />
+        </>
+      ))
+    ) : (
+      <span>{items}</span>
+    )
   }
 </div>
 

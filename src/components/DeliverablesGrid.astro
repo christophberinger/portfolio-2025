@@ -1,0 +1,59 @@
+---
+interface Props {
+  deliverables: Record<string, string[]>;
+}
+
+const { deliverables } = Astro.props;
+---
+
+<div class="deliverables-grid">
+  {
+    Object.entries(deliverables).map(([category, items]) => (
+      <div class="category">
+        <h4>{category}</h4>
+        <ul>
+          {items.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  .deliverables-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .deliverables-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .category h4 {
+    font-weight: 800;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .category ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .category li {
+    margin-bottom: 0.25rem;
+    line-height: 1.6;
+  }
+
+  .category li::before {
+    content: "• ";
+    margin-right: 0.5rem;
+  }
+</style>

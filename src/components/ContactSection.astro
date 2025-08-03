@@ -1,0 +1,50 @@
+---
+import AnimatedText from './AnimatedText.astro';
+---
+
+<section class="contact-intro">
+  <AnimatedText>
+    <h3>If you want to hire me, use good old</h3>
+  </AnimatedText>
+  <div class="contact-links">
+    <a href="mailto:c@beringer.io?Subject=Hello" title="Write me an email">
+      email
+    </a>
+    <span class="contact-divider">, or contact me on</span>
+    <a
+      href="http://de.linkedin.com/pub/christoph-beringer/6/137/3b2"
+      title="LinkedIn"
+      target="_blank"
+      rel="noopener"
+    >
+      LinkedIn
+    </a>
+    <span class="contact-period">.</span>
+  </div>
+</section>
+
+<style>
+  .contact-links {
+    font-size: clamp(3rem, 2rem + 4vw, 4rem);
+    line-height: 1.3;
+    font-weight: 900;
+    text-align: center;
+    margin-top: var(--space-md);
+  }
+
+  .contact-links a {
+    color: var(--text-color);
+    text-decoration: underline;
+    transition: all 0.2s ease;
+  }
+
+  .contact-links a:hover {
+    color: #00c8ff;
+    text-shadow: 0 0 10px rgba(0, 200, 255, 0.5);
+  }
+
+  .contact-divider,
+  .contact-period {
+    color: var(--text-color);
+  }
+</style>

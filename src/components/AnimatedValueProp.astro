@@ -1,0 +1,110 @@
+---
+interface Props {
+  text: string;
+}
+
+const { text } = Astro.props;
+---
+
+<section class="value-prop">
+  <p class="lead" data-animate-value-prop>{text}</p>
+</section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  function animateValueProp() {
+    const valuePropElement = document.querySelector('[data-animate-value-prop]');
+    
+    if (!valuePropElement) return;
+
+    // Clear any existing animations
+    gsap.killTweensOf(valuePropElement);
+    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+
+    // Split text into words
+    const text = valuePropElement.textContent || '';
+    const words = text.split(' ');
+    valuePropElement.innerHTML = words.map(word => `<span class="word">${word}</span>`).join(' ');
+    
+    const wordSpans = valuePropElement.querySelectorAll('.word');
+    
+    // Set initial state - simpler without blur
+    gsap.set(wordSpans, { 
+      opacity: 0,
+      y: 20,
+      scale: 0.8
+    });
+
+    // Create scroll-triggered animation
+    gsap.to(wordSpans, {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      duration: 0.5,
+      stagger: 0.03,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: valuePropElement,
+        start: "top 85%",
+        end: "bottom 50%",
+        toggleActions: "play none none none"
+      }
+    });
+
+    // Add highlights to key phrases after animation
+    setTimeout(() => {
+      const keyPhrases = ['think better', 'build faster', 'adapt confidently', 'AI-shaped', 'systems-driven'];
+      keyPhrases.forEach(phrase => {
+        const phraseRegex = new RegExp(`(${phrase})`, 'gi');
+        valuePropElement.innerHTML = valuePropElement.innerHTML.replace(phraseRegex, `<span class="highlight">$1</span>`);
+      });
+    }, 1000);
+  }
+
+  // Ensure script runs after component is mounted
+  setTimeout(animateValueProp, 200);
+  
+  // Handle Astro page transitions
+  document.addEventListener('astro:page-load', () => {
+    setTimeout(animateValueProp, 200);
+  });
+</script>
+
+<style>
+  .value-prop {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .word {
+    display: inline-block;
+    margin-right: 0.25em;
+  }
+
+  .highlight {
+    background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+    border-radius: 3px;
+    padding: 0 2px;
+    transition: all 0.3s ease;
+  }
+
+  .highlight:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+    transform: scale(1.05);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .word {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+    
+    .highlight {
+      background: rgba(255, 255, 255, 0.1) !important;
+    }
+  }
+</style>

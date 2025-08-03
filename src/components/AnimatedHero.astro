@@ -1,0 +1,100 @@
+---
+interface Props {
+  name: string;
+  title: string;
+}
+
+const { name, title } = Astro.props;
+---
+
+<div class="hero-section">
+  <p class="name" data-animate-name>{name}</p>
+  <h1 data-animate-title>{title}</h1>
+</div>
+
+<script>
+  import { gsap } from 'gsap';
+
+  function animateHero() {
+    const nameElement = document.querySelector('[data-animate-name]');
+    const titleElement = document.querySelector('[data-animate-title]');
+    
+    if (!nameElement || !titleElement) return;
+
+    // Clear any existing animations
+    gsap.killTweensOf([nameElement, titleElement]);
+
+    // Set initial states
+    gsap.set(nameElement, { opacity: 0, y: 20 });
+    gsap.set(titleElement, { opacity: 1 }); // Keep title visible initially
+
+    // Create timeline
+    const tl = gsap.timeline({ delay: 0.5 });
+
+    // Animate name first
+    tl.to(nameElement, {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      ease: "power2.out"
+    });
+
+    // Split title into words and animate each word
+    const titleText = titleElement.textContent || '';
+    const words = titleText.split(' ');
+    titleElement.innerHTML = words.map(word => `<span class="word">${word}</span>`).join(' ');
+    
+    const wordSpans = titleElement.querySelectorAll('.word');
+    
+    // Set initial state for words
+    gsap.set(wordSpans, { 
+      opacity: 0, 
+      y: 30, 
+      rotationX: -45,
+      transformOrigin: "center bottom"
+    });
+    
+    // Animate words in
+    tl.to(wordSpans, {
+      opacity: 1,
+      y: 0,
+      rotationX: 0,
+      duration: 0.6,
+      stagger: 0.08,
+      ease: "back.out(1.4)"
+    }, "-=0.2");
+  }
+
+  // Ensure script runs after component is mounted
+  setTimeout(animateHero, 100);
+  
+  // Handle Astro page transitions
+  document.addEventListener('astro:page-load', () => {
+    setTimeout(animateHero, 100);
+  });
+</script>
+
+<style>
+  .hero-section {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .hero-section h1 {
+    margin-bottom: 1rem;
+    perspective: 1000px;
+  }
+
+  .word {
+    display: inline-block;
+    margin-right: 0.3em;
+    transform-origin: center bottom;
+  }
+
+  .name {
+    font-size: clamp(1.25rem, 0.5rem + 0.5vw, 1.5rem);
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 1rem;
+  }
+</style>

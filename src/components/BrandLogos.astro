@@ -1,0 +1,121 @@
+---
+// Import all brand logos
+import AdidasLogo from "../assets/brands/Adidas.svg?raw";
+import AudiLogo from "../assets/brands/Audi.svg?raw";
+import DmLogo from "../assets/brands/Dm.svg?raw";
+import EbayLogo from "../assets/brands/Ebay.svg?raw";
+import EnBwLogo from "../assets/brands/EnBw.svg?raw";
+import EscadaLogo from "../assets/brands/Escada.svg?raw";
+import HugoBossLogo from "../assets/brands/HugoBoss.svg?raw";
+import ManLogo from "../assets/brands/Man.svg?raw";
+import MercedesAmgLogo from "../assets/brands/MercedesAmg.svg?raw";
+import PayPalLogo from "../assets/brands/PayPal.svg?raw";
+import PorscheLogo from "../assets/brands/Porsche.svg?raw";
+import PorscheDesignLogo from "../assets/brands/PorscheDesign.svg?raw";
+import SteigenbergerLogo from "../assets/brands/Steigenberger.svg?raw";
+import TelefonicaLogo from "../assets/brands/Telefonica.svg?raw";
+import VolkswagenLogo from "../assets/brands/Volkswagen.svg?raw";
+import DmTechLogo from "../assets/brands/dmTech.svg?raw";
+
+const brandLogos = [
+  { name: "Adidas", logo: AdidasLogo },
+  { name: "Audi", logo: AudiLogo },
+  { name: "dm-drogerie markt", logo: DmLogo },
+  { name: "eBay", logo: EbayLogo },
+  { name: "EnBW", logo: EnBwLogo },
+  { name: "Escada", logo: EscadaLogo },
+  { name: "Hugo Boss", logo: HugoBossLogo },
+  { name: "MAN", logo: ManLogo },
+  { name: "Mercedes AMG", logo: MercedesAmgLogo },
+  { name: "PayPal", logo: PayPalLogo },
+  { name: "Porsche", logo: PorscheLogo },
+  { name: "Porsche Design", logo: PorscheDesignLogo },
+  { name: "Steigenberger", logo: SteigenbergerLogo },
+  { name: "Telefonica", logo: TelefonicaLogo },
+  { name: "Volkswagen", logo: VolkswagenLogo },
+  { name: "dmTech", logo: DmTechLogo },
+];
+
+// Shuffle function for randomization
+function shuffleArray(array: any[]) {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+}
+
+// Create multiple randomized sequences for each row
+function createRandomSequence(logos: any[], repetitions: number) {
+  let sequence: any[] = [];
+  for (let i = 0; i < repetitions; i++) {
+    const shuffled = shuffleArray(logos);
+    // Add random spacing variations
+    const spacedLogos = shuffled.map(logo => ({
+      ...logo,
+      spacing: Math.random() < 0.3 ? 'wide' : Math.random() < 0.5 ? 'narrow' : 'normal'
+    }));
+    sequence = sequence.concat(spacedLogos);
+  }
+  return sequence;
+}
+
+// Split logos into two groups and create long randomized sequences
+const group1 = brandLogos.slice(0, Math.ceil(brandLogos.length / 2));
+const group2 = brandLogos.slice(Math.ceil(brandLogos.length / 2));
+
+const row1 = createRandomSequence(group1, 8); // 8 repetitions with variations
+const row2 = createRandomSequence(group2, 8);
+---
+
+<div class="brands-section">
+  <div class="brands-container">
+    <h4>Trusted by Leading Brands Across Industries</h4>
+  </div>
+  <div class="logo-carousel-fullwidth">
+    <div class="logo-row row-1">
+      {
+        row1.map((brand) => (
+          <div 
+            class={`logo-item spacing-${brand.spacing}`} 
+            set:html={brand.logo} 
+            title={brand.name} 
+          />
+        ))
+      }
+    </div>
+    <div class="logo-row row-2">
+      {
+        row2.map((brand) => (
+          <div 
+            class={`logo-item spacing-${brand.spacing}`} 
+            set:html={brand.logo} 
+            title={brand.name} 
+          />
+        ))
+      }
+    </div>
+  </div>
+</div>
+
+<style>
+  .brands-section {
+    margin: var(--space-5xl) 0;
+    position: relative;
+  }
+
+  .brands-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--content-padding);
+    text-align: center;
+  }
+
+  .brands-container h4 {
+    font-weight: 800;
+    font-size: var(--text-base);
+    color: #767676;
+    margin-bottom: var(--space-5xl);
+  }
+</style>

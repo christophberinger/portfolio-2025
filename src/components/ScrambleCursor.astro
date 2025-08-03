@@ -1,0 +1,132 @@
+---
+// Scramble text cursor effect component
+---
+
+<script>
+  import { gsap } from "gsap";
+
+  // Simple SplitText alternative since we can't use the premium plugin
+  function splitTextIntoChars(selector) {
+    const elements = document.querySelectorAll(selector);
+    const allChars = [];
+    
+    elements.forEach(element => {
+      if (!element.textContent) return;
+      
+      const text = element.textContent;
+      const chars = text.split('').map(char => {
+        const span = document.createElement('span');
+        span.className = 'char';
+        span.textContent = char;
+        span.dataset.content = char;
+        return span;
+      });
+      
+      element.innerHTML = '';
+      chars.forEach(char => {
+        element.appendChild(char);
+        allChars.push(char);
+      });
+    });
+    
+    return allChars;
+  }
+
+  // Simple scramble effect
+  function scrambleText(element, originalText, duration = 0.6) {
+    const chars = '.:!<>-_\\/[]{}—=+*^?#________';
+    let frame = 0;
+    const totalFrames = Math.floor(duration * 60); // 60fps
+    
+    const interval = setInterval(() => {
+      frame++;
+      const progress = frame / totalFrames;
+      
+      let scrambled = '';
+      for (let i = 0; i < originalText.length; i++) {
+        if (originalText[i] === ' ') {
+          scrambled += ' ';
+        } else if (Math.random() < progress) {
+          scrambled += originalText[i];
+        } else {
+          scrambled += chars[Math.floor(Math.random() * chars.length)];
+        }
+      }
+      
+      element.textContent = scrambled;
+      element.classList.add('scrambling');
+      
+      if (frame >= totalFrames) {
+        clearInterval(interval);
+        element.textContent = originalText;
+        element.classList.remove('scrambling');
+      }
+    }, 1000 / 60);
+  }
+
+  function initScrambleCursor() {
+    // Split all text elements into characters
+    const chars = splitTextIntoChars('p, h1, h2, h3, h4, .lead, .mission');
+    
+    // Add mouse move listener to body
+    document.body.addEventListener('pointermove', (e) => {
+      chars.forEach(char => {
+        if (!char.dataset.content) return;
+        
+        const rect = char.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        const x = e.clientX - centerX;
+        const y = e.clientY - centerY;
+        const distance = Math.sqrt(x * x + y * y);
+        
+        if (distance < 60) {
+          // Avoid retriggering if already scrambling
+          if (!char.classList.contains('scrambling')) {
+            const duration = (1 - distance / 60) * 0.5 + 0.2;
+            scrambleText(char, char.dataset.content, duration);
+          }
+        }
+      });
+    });
+  }
+
+  // Initialize when DOM is ready
+  setTimeout(initScrambleCursor, 2000); // Wait for text animations to complete
+  
+  // Handle Astro page transitions
+  document.addEventListener('astro:page-load', () => {
+    setTimeout(initScrambleCursor, 2000);
+  });
+</script>
+
+<style>
+  .char {
+    display: inline-block;
+  }
+
+  .char.scrambling {
+    background: linear-gradient(90deg, #00c8ff, #01ff99);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: glow 0.3s ease-in-out;
+  }
+
+  @keyframes glow {
+    0% { 
+      text-shadow: 0 0 5px rgba(0, 200, 255, 0.5);
+    }
+    50% { 
+      text-shadow: 0 0 10px rgba(0, 200, 255, 0.8), 0 0 15px rgba(1, 255, 153, 0.6);
+    }
+    100% { 
+      text-shadow: 0 0 5px rgba(0, 200, 255, 0.5);
+    }
+  }
+
+  /* Exclude links from scrambling */
+  a .char {
+    pointer-events: none;
+  }
+</style>

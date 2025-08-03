@@ -1,0 +1,113 @@
+/* Component-specific styles */
+
+/* Hero Section */
+.hero-section {
+  text-align: center;
+  margin-bottom: var(--space-6xl);
+}
+
+.hero-section h1 {
+  margin-bottom: var(--space-3xl);
+}
+
+.name {
+  font-size: clamp(1.25rem, 0.5rem + 0.5vw, 1.5rem);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: var(--space-xl);
+}
+
+/* Value Proposition */
+.value-prop {
+  text-align: center;
+  margin-bottom: var(--space-5xl);
+}
+
+.lead {
+  font-size: clamp(1.5rem, 0.75rem + 1vw, 2rem);
+  line-height: 1.6;
+  font-weight: 500;
+  margin-bottom: var(--space-md);
+}
+
+/* Sections */
+section {
+  margin-bottom: var(--space-5xl);
+}
+
+/* Capabilities List */
+.capabilities {
+  font-size: var(--text-lg);
+  line-height: 1.6;
+  margin: var(--space-md) 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.capabilities li {
+  margin-bottom: var(--space-xs);
+  padding-left: var(--space-md);
+  position: relative;
+}
+
+.capabilities li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--text-color);
+}
+
+/* Mission Statement */
+.mission {
+  font-size: clamp(1.25rem, 0.5rem + 0.5vw, 1.5rem);
+  text-align: center;
+}
+
+.cta-intro {
+  text-align: center;
+  margin: var(--space-5xl) 0;
+}
+
+.contact-intro {
+  text-align: center;
+  margin-bottom: var(--space-5xl);
+}
+
+/* Deliverables Section */
+.deliverables-section {
+  margin: var(--space-5xl) 0;
+}
+
+.deliverables-section h3 {
+  text-align: center;
+  margin-bottom: var(--space-5xl);
+}
+
+/* Overview Sections */
+.overview {
+  display: flex;
+  margin: var(--space-5xl) 0;
+}
+
+.overview .column {
+  flex: 1;
+  margin: 0;
+}
+
+.overview .column h4 {
+  font-weight: 500;
+  font-size: var(--text-base);
+  margin-bottom: var(--space-md);
+}
+
+.tools-content, 
+.awards-content {
+  font-size: clamp(1.25rem, 0.5rem + 0.5vw, 1.5rem);
+  line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+  .overview {
+    flex-direction: column;
+  }
+}

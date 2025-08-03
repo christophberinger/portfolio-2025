@@ -1,0 +1,108 @@
+---
+// Simple fluid-like cursor effect without OGL complexity for now
+---
+
+<div id="fluid-cursor"></div>
+
+<script>
+  // Simple cursor effect without GSAP
+
+  let cursor: HTMLElement | null = null;
+  let cursorTrail: HTMLElement[] = [];
+  let mousePos = { x: 0, y: 0 };
+
+  function initFluidCursor() {
+    cursor = document.getElementById('fluid-cursor');
+    if (!cursor) return;
+
+    // Create trail elements
+    for (let i = 0; i < 10; i++) {
+      const trail = document.createElement('div');
+      trail.className = 'cursor-trail';
+      trail.style.cssText = `
+        position: fixed;
+        width: ${20 - i * 1.5}px;
+        height: ${20 - i * 1.5}px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(0, 200, 255, ${0.3 - i * 0.02}), transparent);
+        pointer-events: none;
+        z-index: 9999;
+        mix-blend-mode: screen;
+        transform: translate(-50%, -50%);
+      `;
+      document.body.appendChild(trail);
+      cursorTrail.push(trail);
+    }
+
+    // Mouse move handler
+    document.addEventListener('mousemove', (e) => {
+      mousePos.x = e.clientX;
+      mousePos.y = e.clientY;
+
+      // Show cursor
+      if (cursor) {
+        cursor.style.opacity = '1';
+        cursor.style.left = mousePos.x - 10 + 'px';
+        cursor.style.top = mousePos.y - 10 + 'px';
+      }
+
+      // Position trail elements directly
+      cursorTrail.forEach((trail) => {
+        trail.style.left = mousePos.x + 'px';
+        trail.style.top = mousePos.y + 'px';
+        trail.style.opacity = '1';
+      });
+    });
+
+    // Hide cursor when mouse leaves
+    document.addEventListener('mouseleave', () => {
+      if (cursor) cursor.style.opacity = '0';
+      cursorTrail.forEach(trail => trail.style.opacity = '0');
+    });
+
+    console.log('Simple fluid cursor initialized');
+  }
+
+  // Initialize when DOM is ready
+  setTimeout(initFluidCursor, 1000);
+  
+  // Handle Astro page transitions
+  document.addEventListener('astro:page-load', () => {
+    setTimeout(initFluidCursor, 1000);
+  });
+</script>
+
+<style>
+  #fluid-cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(0, 200, 255, 0.6);
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .cursor-trail {
+    position: fixed;
+    border-radius: 50%;
+    background: rgba(0, 200, 255, 0.3);
+    pointer-events: none;
+    z-index: 9998;
+    mix-blend-mode: screen;
+  }
+
+  @media (max-width: 768px) {
+    #fluid-cursor {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #fluid-cursor {
+      display: none;
+    }
+  }
+</style>

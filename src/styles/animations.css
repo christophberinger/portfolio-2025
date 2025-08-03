@@ -1,0 +1,167 @@
+/* Animation styles */
+
+/* Page entrance animation */
+.animate {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+.fadeInUp {
+  animation-name: fadeInUp;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Text animation styles */
+.animated-text .word {
+  display: inline-block;
+}
+
+.animated-text .highlight {
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.05)
+  );
+  border-radius: 3px;
+  padding: 0 2px;
+  transition: all 0.3s ease;
+}
+
+.animated-text .highlight:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  transform: scale(1.05);
+}
+
+/* Brand logos animations */
+.logo-carousel-fullwidth {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
+  overflow: hidden;
+  mask: linear-gradient(
+    90deg,
+    transparent,
+    white 45%,
+    white 60%,
+    transparent
+  );
+  -webkit-mask: linear-gradient(
+    90deg,
+    transparent,
+    white 45%,
+    white 60%,
+    transparent
+  );
+}
+
+.logo-row {
+  display: flex;
+  margin-bottom: var(--space-4xl);
+  width: fit-content;
+}
+
+.row-1 {
+  animation: slideLeft 180s linear infinite;
+}
+
+.row-2 {
+  animation: slideRight 220s linear infinite;
+}
+
+.logo-item {
+  height: 32px;
+  min-width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: brightness(0) invert(1);
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+  margin-right: var(--space-3xl);
+}
+
+.logo-item.spacing-narrow {
+  margin-right: var(--space-xl);
+}
+
+.logo-item.spacing-wide {
+  margin-right: var(--space-4xl);
+}
+
+.logo-item.spacing-normal {
+  margin-right: var(--space-3xl);
+}
+
+.logo-item:hover {
+  opacity: 1;
+}
+
+.logo-item svg {
+  height: 100%;
+  width: auto;
+  max-width: 120px;
+}
+
+@keyframes slideLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-12.5%);
+  }
+}
+
+@keyframes slideRight {
+  from {
+    transform: translateX(-12.5%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .animated-text .word {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  
+  .animated-text .highlight {
+    background: rgba(255, 255, 255, 0.1) !important;
+  }
+  
+  .logo-row {
+    animation: none !important;
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .logo-item {
+    height: 28px;
+    min-width: 60px;
+    margin-right: var(--space-lg);
+  }
+  
+  .logo-item.spacing-narrow {
+    margin-right: var(--space-md);
+  }
+  
+  .logo-item.spacing-wide {
+    margin-right: var(--space-xl);
+  }
+}
