@@ -57,34 +57,33 @@ const {
 
       const wordSpans = textElement.querySelectorAll(".word");
 
-      // Set initial state
+      // Set initial state - simplified
       gsap.set(wordSpans, {
         opacity: 0,
-        y: 10,
-        scale: 0.9,
+        y: 8,
+        // Removed scale for less visual noise
       });
 
       const animateWords = () => {
         gsap.to(wordSpans, {
           opacity: 1,
           y: 0,
-          scale: 1,
-          duration: 0.5,
-          stagger: 0.1,
+          duration: 0.4,
+          stagger: 0.06,
           ease: "power2.out",
           delay: delay / 1000,
           onComplete: () => {
-            // Add highlights after animation
+            // Add highlights after animation - simplified
             if (highlights.length > 0) {
               setTimeout(() => {
-                highlights.forEach((phrase) => {
+                highlights.forEach((phrase: string) => {
                   const phraseRegex = new RegExp(`(${phrase})`, "gi");
                   textElement.innerHTML = textElement.innerHTML.replace(
                     phraseRegex,
                     `<span class="highlight">$1</span>`
                   );
                 });
-              }, 200);
+              }, 100); // Faster highlight appearance
             }
           },
         });

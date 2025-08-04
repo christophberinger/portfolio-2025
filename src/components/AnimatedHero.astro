@@ -13,19 +13,19 @@ const { name, title } = Astro.props;
 </div>
 
 <script>
-  import { gsap } from 'gsap';
+  import { gsap } from "gsap";
 
   function animateHero() {
-    const nameElement = document.querySelector('[data-animate-name]');
-    const titleElement = document.querySelector('[data-animate-title]');
-    
+    const nameElement = document.querySelector("[data-animate-name]");
+    const titleElement = document.querySelector("[data-animate-title]");
+
     if (!nameElement || !titleElement) return;
 
     // Clear any existing animations
     gsap.killTweensOf([nameElement, titleElement]);
 
     // Set initial states
-    gsap.set(nameElement, { opacity: 0, y: 20 });
+    gsap.set(nameElement, { opacity: 0, y: 10 });
     gsap.set(titleElement, { opacity: 1 }); // Keep title visible initially
 
     // Create timeline
@@ -36,40 +36,44 @@ const { name, title } = Astro.props;
       opacity: 1,
       y: 0,
       duration: 0.8,
-      ease: "power2.out"
+      ease: "power2.out",
     });
 
     // Split title into words and animate each word
-    const titleText = titleElement.textContent || '';
-    const words = titleText.split(' ');
-    titleElement.innerHTML = words.map(word => `<span class="word">${word}</span>`).join(' ');
-    
-    const wordSpans = titleElement.querySelectorAll('.word');
-    
-    // Set initial state for words
-    gsap.set(wordSpans, { 
-      opacity: 0, 
-      y: 30, 
-      rotationX: -45,
-      transformOrigin: "center bottom"
+    const titleText = titleElement.textContent || "";
+    const words = titleText.split(" ");
+    titleElement.innerHTML = words
+      .map((word) => `<span class="word">${word}</span>`)
+      .join(" ");
+
+    const wordSpans = titleElement.querySelectorAll(".word");
+
+    // Set initial state for words - simplified
+    gsap.set(wordSpans, {
+      opacity: 0,
+      y: 8,
+      // Removed rotationX for cleaner animation
     });
-    
-    // Animate words in
-    tl.to(wordSpans, {
-      opacity: 1,
-      y: 0,
-      rotationX: 0,
-      duration: 0.6,
-      stagger: 0.08,
-      ease: "back.out(1.4)"
-    }, "-=0.2");
+
+    // Animate words in - simplified
+    tl.to(
+      wordSpans,
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        stagger: 0.06,
+        ease: "power2.out", // Gentler easing
+      },
+      "-=0.2"
+    );
   }
 
   // Ensure script runs after component is mounted
   setTimeout(animateHero, 100);
-  
+
   // Handle Astro page transitions
-  document.addEventListener('astro:page-load', () => {
+  document.addEventListener("astro:page-load", () => {
     setTimeout(animateHero, 100);
   });
 </script>
