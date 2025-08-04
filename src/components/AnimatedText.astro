@@ -105,13 +105,28 @@ const {
     });
   }
 
-  // Initialize when DOM is ready
-  setTimeout(initAnimatedTexts, 100);
+  // iOS Safari-friendly initialization
+  function safeInitAnimations() {
+    setTimeout(() => {
+      initAnimatedTexts();
+      // Force ScrollTrigger refresh for iOS Safari
+      setTimeout(() => ScrollTrigger.refresh(), 100);
+    }, 150);
+  }
 
-  // Handle Astro page transitions
-  document.addEventListener("astro:page-load", () => {
-    setTimeout(initAnimatedTexts, 100);
+  // Multiple init strategies for iOS Safari
+  document.addEventListener("DOMContentLoaded", safeInitAnimations);
+  document.addEventListener("astro:page-load", safeInitAnimations);
+  
+  // iOS Safari sometimes needs this
+  window.addEventListener("load", () => {
+    setTimeout(() => ScrollTrigger.refresh(), 200);
   });
+  
+  // Immediate init if already loaded
+  if (document.readyState !== "loading") {
+    safeInitAnimations();
+  }
 </script>
 
 <style>

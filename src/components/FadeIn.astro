@@ -21,6 +21,9 @@ const { delay = 0, duration = 0.6, class: className = "" } = Astro.props;
 
   function initFadeIn() {
     const fadeElements = document.querySelectorAll(".fade-in");
+    
+    // Only refresh once at start, not in loop
+    // ScrollTrigger.refresh();
 
     fadeElements.forEach((element) => {
       const delay = parseFloat(element.getAttribute("data-delay") || "0");
@@ -28,41 +31,96 @@ const { delay = 0, duration = 0.6, class: className = "" } = Astro.props;
         element.getAttribute("data-duration") || "0.8"
       );
 
-      // Start invisible
-      gsap.set(element, {
+      // Detect iOS/mobile devices - simpler detection
+      const isMobile = /iPad|iPhone|iPod|Android|Mobile/i.test(navigator.userAgent);
+      
+      console.log('Initializing FadeIn for element:', element, 'Mobile device:', isMobile);
+      
+      // Start invisible with device-appropriate properties
+      const initialProps: any = {
         opacity: 0,
-        y: 10,
-        filter: "blur(20px)",
-      });
+        y: 20,
+        willChange: "transform, opacity",
+        backfaceVisibility: "hidden",
+        perspective: 1000
+      };
+      
+      // Add blur only on desktop devices
+      if (!isMobile) {
+        initialProps.filter = "blur(8px)";
+        console.log('Adding blur effect for desktop');
+      } else {
+        console.log('Skipping blur effect for mobile');
+      }
+      
+      gsap.set(element, initialProps);
 
       // Animate in when element comes into view
       ScrollTrigger.create({
         trigger: element,
-        start: "top 80%",
+        start: "top 85%", // Slightly earlier trigger for mobile
+        end: "bottom 15%",
+        // Add mobile-specific settings
+        refreshPriority: -1,
         onEnter: () => {
-          gsap.to(element, {
+          const animProps: any = {
             opacity: 1,
             y: 0,
-            filter: "blur(0px)",
             duration: duration,
             delay: delay,
             ease: "power2.out",
-          });
+            clearProps: "willChange"
+          };
+          
+          // Add blur transition only on desktop devices
+          if (!isMobile) {
+            animProps.filter = "blur(0px)";
+            console.log('Animating blur to 0 for desktop');
+          }
+          
+          gsap.to(element, animProps);
         },
+        // Remove the infinite loop - onRefresh calling refresh()
+        // onRefresh: () => {
+        //   ScrollTrigger.refresh();
+        // }
       });
     });
   }
 
-  // Initialize when DOM is ready
-  document.addEventListener("DOMContentLoaded", initFadeIn);
-
-  // Handle Astro page transitions
-  document.addEventListener("astro:page-load", initFadeIn);
-
-  // Also try immediate initialization
-  if (document.readyState !== "loading") {
-    initFadeIn();
+  // iOS Safari-friendly initialization
+  function safeInit() {
+    // Add small delay for iOS Safari to properly load GSAP
+    setTimeout(() => {
+      initFadeIn();
+      // Force refresh after init for iOS Safari
+      setTimeout(() => ScrollTrigger.refresh(), 100);
+    }, 100);
   }
+
+  // Multiple initialization strategies for iOS Safari
+  document.addEventListener("DOMContentLoaded", safeInit);
+  document.addEventListener("astro:page-load", safeInit);
+  
+  // iOS Safari sometimes needs this
+  window.addEventListener("load", () => {
+    setTimeout(() => ScrollTrigger.refresh(), 200);
+  });
+  
+  // Immediate init if already loaded
+  if (document.readyState !== "loading") {
+    safeInit();
+  }
+  
+  // Handle iOS viewport changes
+  window.addEventListener("resize", () => {
+    ScrollTrigger.refresh();
+  });
+  
+  // iOS Safari scroll fix
+  window.addEventListener("orientationchange", () => {
+    setTimeout(() => ScrollTrigger.refresh(), 300);
+  });
 </script>
 
 <style>

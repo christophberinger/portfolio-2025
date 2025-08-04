@@ -55,18 +55,37 @@
     });
   }
 
-  // Initialize when DOM is ready
-  document.addEventListener('DOMContentLoaded', initStickyContact);
-  
-  // Also try immediate initialization
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initStickyContact);
-  } else {
-    initStickyContact();
+  // iOS Safari-friendly initialization
+  function safeInitSticky() {
+    setTimeout(() => {
+      initStickyContact();
+      // Force ScrollTrigger refresh for iOS Safari
+      setTimeout(() => ScrollTrigger.refresh(), 100);
+    }, 150);
   }
+
+  // Multiple init strategies for iOS Safari
+  document.addEventListener('DOMContentLoaded', safeInitSticky);
+  document.addEventListener('astro:page-load', safeInitSticky);
   
-  // Handle Astro page transitions
-  document.addEventListener('astro:page-load', initStickyContact);
+  // iOS Safari sometimes needs this
+  window.addEventListener('load', () => {
+    setTimeout(() => ScrollTrigger.refresh(), 200);
+  });
+  
+  // Handle iOS viewport/orientation changes
+  window.addEventListener('resize', () => {
+    ScrollTrigger.refresh();
+  });
+  
+  window.addEventListener('orientationchange', () => {
+    setTimeout(() => ScrollTrigger.refresh(), 300);
+  });
+  
+  // Immediate init if already loaded
+  if (document.readyState !== 'loading') {
+    safeInitSticky();
+  }
 </script>
 
 <style>
