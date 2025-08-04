@@ -52,9 +52,14 @@ function createRandomSequence(logos: any[], repetitions: number) {
   for (let i = 0; i < repetitions; i++) {
     const shuffled = shuffleArray(logos);
     // Add random spacing variations
-    const spacedLogos = shuffled.map(logo => ({
+    const spacedLogos = shuffled.map((logo) => ({
       ...logo,
-      spacing: Math.random() < 0.3 ? 'wide' : Math.random() < 0.5 ? 'narrow' : 'normal'
+      spacing:
+        Math.random() < 0.3
+          ? "wide"
+          : Math.random() < 0.5
+            ? "narrow"
+            : "normal",
     }));
     sequence = sequence.concat(spacedLogos);
   }
@@ -77,10 +82,10 @@ const row2 = createRandomSequence(group2, 8);
     <div class="logo-row row-1">
       {
         row1.map((brand) => (
-          <div 
-            class={`logo-item spacing-${brand.spacing}`} 
-            set:html={brand.logo} 
-            title={brand.name} 
+          <div
+            class={`logo-item spacing-${brand.spacing}`}
+            set:html={brand.logo}
+            title={brand.name}
           />
         ))
       }
@@ -88,10 +93,10 @@ const row2 = createRandomSequence(group2, 8);
     <div class="logo-row row-2">
       {
         row2.map((brand) => (
-          <div 
-            class={`logo-item spacing-${brand.spacing}`} 
-            set:html={brand.logo} 
-            title={brand.name} 
+          <div
+            class={`logo-item spacing-${brand.spacing}`}
+            set:html={brand.logo}
+            title={brand.name}
           />
         ))
       }
@@ -113,7 +118,7 @@ const row2 = createRandomSequence(group2, 8);
   }
 
   .brands-container h4 {
-    font-weight: 800;
+    font-weight: 600;
     font-size: var(--text-base);
     color: #767676;
     margin-bottom: var(--space-5xl);
