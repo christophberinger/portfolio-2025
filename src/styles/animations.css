@@ -133,8 +133,8 @@
   }
 }
 
-/* Reduced motion support - disable text animations but keep logos */
-@media (prefers-reduced-motion: reduce) {
+/* Reduced motion support - only on desktop, allow animations on mobile */
+@media (prefers-reduced-motion: reduce) and (min-width: 769px) {
   .animated-text .word {
     opacity: 1 !important;
     transform: none !important;
@@ -143,11 +143,16 @@
   .animated-text .highlight {
     background: rgba(255, 255, 255, 0.1) !important;
   }
-  
-  /* Keep logo animations running even with reduced motion preference */
-  /* .logo-row {
-    animation: none !important;
-  } */
+}
+
+/* Keep all animations running on mobile regardless of motion preference */
+@media (max-width: 768px) {
+  .animated-text .word,
+  .fade-in,
+  .logo-row {
+    /* Force animations to work on mobile even with reduced motion */
+    animation-play-state: running !important;
+  }
 }
 
 /* Mobile adjustments */

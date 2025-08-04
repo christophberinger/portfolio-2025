@@ -20,11 +20,19 @@ const { delay = 0, duration = 0.6, class: className = "" } = Astro.props;
   gsap.registerPlugin(ScrollTrigger);
 
   function initFadeIn() {
-    // Respect reduced motion preference
+    // Detect mobile devices  
+    const isMobile = /iPad|iPhone|iPod|Android|Mobile/i.test(navigator.userAgent);
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) {
-      console.log('Reduced motion preferred - skipping fade animations');
+    
+    // Skip animations only if reduced motion is preferred AND we're on desktop
+    // Always allow animations on mobile devices (especially iOS Safari)
+    if (prefersReducedMotion && !isMobile) {
+      console.log('Reduced motion preferred on desktop - skipping fade animations');
       return;
+    }
+    
+    if (isMobile) {
+      console.log('Mobile device detected - running fade animations');
     }
     
     const fadeElements = document.querySelectorAll(".fade-in");
@@ -136,7 +144,8 @@ const { delay = 0, duration = 0.6, class: className = "" } = Astro.props;
     opacity: 1;
   }
 
-  @media (prefers-reduced-motion: reduce) {
+  /* Reduced motion support - only disable on desktop */
+  @media (prefers-reduced-motion: reduce) and (min-width: 769px) {
     .fade-in {
       opacity: 1 !important;
       transform: none !important;
