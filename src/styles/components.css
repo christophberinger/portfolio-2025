@@ -8,13 +8,13 @@
 
 .hero-section h1 {
   margin-bottom: var(--space-3xl);
+  margin-top: 0;
 }
 
 .name {
   font-size: clamp(1.25rem, 0.5rem + 0.5vw, 1.5rem);
   font-weight: 500;
   color: rgba(255, 255, 255, 0.8);
-  margin-bottom: var(--space-xl);
 }
 
 /* Value Proposition */
