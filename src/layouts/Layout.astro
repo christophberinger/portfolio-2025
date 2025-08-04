@@ -10,8 +10,8 @@ interface Props {
 }
 
 const {
-  title = "Christoph Beringer - Freelance User Experience Architect, Interaction Designer",
-  description = "UX Professional, Product Designer and Problem Solver with over 12 years of experience",
+  title = "Christoph Beringer - Freelance UX Leader & Technologist | Strategy, Design & Code for the AI Age",
+  description = "Freelance UX Leader with 20+ years experience in strategy, design, and engineering. I help organizations think better, build faster, and adapt confidently to AI-shaped, systems-driven world.",
 } = Astro.props;
 ---
 
@@ -21,6 +21,23 @@ const {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <meta name="keywords" content="UX Leader, Product Strategy, AI Integration, Design Systems, Frontend Development, User Experience, Digital Transformation, Automation, MarTech" />
+    <meta name="author" content="Christoph Beringer" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content="https://beringer.io" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://beringer.io" />
+    
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -29,12 +46,47 @@ const {
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json" is:inline>
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Christoph Beringer",
+      "jobTitle": "Freelance UX Leader & Technologist",
+      "description": "UX Professional and Product Designer with 20+ years of experience in strategy, design, and engineering",
+      "url": "https://beringer.io",
+      "sameAs": [
+        "http://de.linkedin.com/pub/christoph-beringer/6/137/3b2"
+      ],
+      "knowsAbout": [
+        "User Experience Design",
+        "Product Strategy", 
+        "AI Integration",
+        "Design Systems",
+        "Frontend Development",
+        "Digital Transformation",
+        "Automation",
+        "MarTech"
+      ],
+      "offers": {
+        "@type": "Service",
+        "name": "UX & Product Strategy Services",
+        "description": "Strategy, Design & Code for the AI Age"
+      }
+    }
+    </script>
     <title>{title}</title>
   </head>
   <body>
+    <!-- Skip to main content link for keyboard navigation -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
     <div id="content">
       <Header />
-      <slot />
+      <main id="main-content" role="main">
+        <slot />
+      </main>
     </div>
   </body>
 </html>

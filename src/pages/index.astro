@@ -47,12 +47,12 @@ const awards =
 ---
 
 <Layout>
-  <div class="hero-section">
+  <section class="hero-section" aria-labelledby="main-heading">
     <AnimatedText class="name" delay={0} immediate={true}>
       <p>Christoph Beringer · Freelance UX Leader & Technologist</p>
     </AnimatedText>
     <AnimatedText delay={600} immediate={true}>
-      <h1>Strategy, Design & Code <br />for the AI Age</h1>
+      <h1 id="main-heading">Strategy, Design & Code <br />for the AI Age</h1>
     </AnimatedText>
     <AnimatedText
       class="value-prop"
@@ -67,7 +67,7 @@ const awards =
         thrive in an AI-shaped, systems-driven world.
       </p>
     </AnimatedText>
-  </div>
+  </section>
 
   <section class="approach">
     <FadeIn>
@@ -102,37 +102,38 @@ const awards =
     </FadeIn>
   </section>
 
-  <div class="deliverables-section">
+  <section class="deliverables-section" aria-labelledby="deliverables-heading">
     <FadeIn>
+      <h2 id="deliverables-heading" class="sr-only">Services and Deliverables</h2>
       <DeliverablesGrid deliverables={deliverables} />
     </FadeIn>
-  </div>
+  </section>
 
-  <div class="overview">
+  <section class="overview" aria-labelledby="tools-heading">
     <div class="column">
       <FadeIn>
-        <h4>My Everyday Stack (and Then Some)</h4>
+        <h2 id="tools-heading">My Everyday Stack (and Then Some)</h2>
       </FadeIn>
       <FadeIn delay={0.1}>
-        <div class="tools-content">{tools}</div>
+        <p class="tools-content">{tools}</p>
       </FadeIn>
     </div>
-  </div>
+  </section>
 
   <FadeIn>
     <BrandLogos />
   </FadeIn>
 
-  <div class="overview">
+  <section class="overview" aria-labelledby="awards-heading">
     <div class="column">
       <FadeIn>
-        <h4>Certified by People in Blazers</h4>
+        <h2 id="awards-heading">Certified by People in Blazers</h2>
       </FadeIn>
       <FadeIn delay={0.1}>
-        <div class="awards-content">{awards}</div>
+        <p class="awards-content">{awards}</p>
       </FadeIn>
     </div>
-  </div>
+  </section>
 
   <section class="cta-intro">
     <FadeIn>

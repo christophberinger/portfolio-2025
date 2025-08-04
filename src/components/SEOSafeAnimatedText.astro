@@ -1,0 +1,112 @@
+---
+// SEO-safe animated text that preserves content for crawlers
+export interface Props {
+  delay?: number;
+  duration?: number;
+  class?: string;
+  immediate?: boolean;
+}
+
+const { delay = 0, duration = 0.6, class: className = "", immediate = false } = Astro.props;
+---
+
+<div 
+  class={`seo-animated-text ${className}`}
+  data-animate-delay={delay}
+  data-animate-duration={duration}
+  data-animate-immediate={immediate}
+>
+  <slot />
+</div>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  function initSEOSafeAnimations() {
+    // Detect mobile devices  
+    const isMobile = /iPad|iPhone|iPod|Android|Mobile/i.test(navigator.userAgent);
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    // Skip animations only if reduced motion is preferred AND we're on desktop
+    if (prefersReducedMotion && !isMobile) {
+      console.log('Reduced motion preferred on desktop - skipping animations');
+      return;
+    }
+
+    const animatedElements = document.querySelectorAll('.seo-animated-text');
+    
+    animatedElements.forEach((element) => {
+      const delay = parseFloat(element.getAttribute('data-animate-delay') || '0') / 1000;
+      const duration = parseFloat(element.getAttribute('data-animate-duration') || '0.6');
+      const immediate = element.getAttribute('data-animate-immediate') === 'true';
+
+      // SEO-SAFE: Don't modify DOM structure, just animate presentation
+      // Text remains fully accessible to crawlers at all times
+      
+      // Set initial state using transforms (SEO-safe)
+      gsap.set(element, {
+        opacity: 1, // Keep visible for crawlers but use transforms for animation
+        y: 20,
+        scale: 0.95
+      });
+
+      const animateIn = () => {
+        gsap.to(element, {
+          y: 0,
+          scale: 1,
+          duration: duration,
+          delay: delay,
+          ease: "power2.out",
+          // Ensure content remains accessible during animation
+          clearProps: "transform" // Clean up after animation
+        });
+      };
+
+      if (immediate) {
+        // Animate immediately for above-the-fold content
+        setTimeout(animateIn, 100);
+      } else {
+        // Use ScrollTrigger for content below the fold
+        ScrollTrigger.create({
+          trigger: element,
+          start: "top 85%",
+          onEnter: animateIn,
+          once: true
+        });
+      }
+    });
+  }
+
+  // SEO-safe initialization
+  function safeInit() {
+    setTimeout(() => {
+      initSEOSafeAnimations();
+      setTimeout(() => ScrollTrigger.refresh(), 100);
+    }, 150);
+  }
+
+  // Multiple init strategies for reliability
+  document.addEventListener('DOMContentLoaded', safeInit);
+  document.addEventListener('astro:page-load', safeInit);
+  
+  if (document.readyState !== 'loading') {
+    safeInit();
+  }
+</script>
+
+<style>
+  .seo-animated-text {
+    /* Content remains visible and accessible */
+    /* No opacity: 0 or display: none that could hurt SEO */
+  }
+  
+  /* Reduced motion support - only disable on desktop */
+  @media (prefers-reduced-motion: reduce) and (min-width: 769px) {
+    .seo-animated-text {
+      transform: none !important;
+    }
+  }
+</style>

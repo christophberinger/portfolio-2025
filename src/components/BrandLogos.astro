@@ -78,25 +78,29 @@ const row2 = createRandomSequence(group2, 8);
   <div class="brands-container">
     <h4>Trusted by Leading Brands Across Industries</h4>
   </div>
-  <div class="logo-carousel-fullwidth">
-    <div class="logo-row row-1">
+  <div class="logo-carousel-fullwidth" role="img" aria-label="Brand logos carousel showing companies I've worked with">
+    <div class="logo-row row-1" aria-hidden="true">
       {
         row1.map((brand) => (
           <div
             class={`logo-item spacing-${brand.spacing}`}
             set:html={brand.logo}
             title={brand.name}
+            role="img"
+            aria-label={`${brand.name} logo`}
           />
         ))
       }
     </div>
-    <div class="logo-row row-2">
+    <div class="logo-row row-2" aria-hidden="true">
       {
         row2.map((brand) => (
           <div
             class={`logo-item spacing-${brand.spacing}`}
             set:html={brand.logo}
             title={brand.name}
+            role="img"
+            aria-label={`${brand.name} logo`}
           />
         ))
       }
@@ -120,7 +124,7 @@ const row2 = createRandomSequence(group2, 8);
   .brands-container h4 {
     font-weight: 600;
     font-size: var(--text-base);
-    color: #767676;
+    color: var(--secondary-text);
     margin-bottom: var(--space-5xl);
   }
 </style>
