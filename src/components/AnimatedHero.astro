@@ -16,6 +16,13 @@ const { name, title } = Astro.props;
   import { gsap } from "gsap";
 
   function animateHero() {
+    // Respect reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+      console.log('Reduced motion preferred - skipping hero animations');
+      return;
+    }
+    
     const nameElement = document.querySelector("[data-animate-name]");
     const titleElement = document.querySelector("[data-animate-title]");
 
@@ -48,11 +55,10 @@ const { name, title } = Astro.props;
 
     const wordSpans = titleElement.querySelectorAll(".word");
 
-    // Set initial state for words - simplified
+    // Set initial state for words - prevent layout shift
     gsap.set(wordSpans, {
       opacity: 0,
-      y: 8,
-      // Removed rotationX for cleaner animation
+      transform: "translateY(8px)", // Use transform to avoid affecting layout
     });
 
     // Animate words in - simplified
@@ -60,7 +66,7 @@ const { name, title } = Astro.props;
       wordSpans,
       {
         opacity: 1,
-        y: 0,
+        transform: "translateY(0px)",
         duration: 0.5,
         stagger: 0.06,
         ease: "power2.out", // Gentler easing

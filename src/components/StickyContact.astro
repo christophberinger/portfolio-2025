@@ -1,8 +1,13 @@
 ---
-// Sticky contact bar that appears when contact section scrolls out of view
+// Sticky contact bar that appears when scrolling down
+export interface Props {
+  showAt?: number; // Scroll progress (0-1) when button should appear
+}
+
+const { showAt = 0.15 } = Astro.props;
 ---
 
-<div class="sticky-contact" id="sticky-contact">
+<div class="sticky-contact" id="sticky-contact" data-show-at={showAt}>
   <div class="sticky-content">
     <a href="mailto:c@beringer.io?Subject=Hello" class="say-hello-btn" title="Write me an email">
       Say Hello
@@ -18,39 +23,41 @@
 
   function initStickyContact() {
     const stickyContact = document.getElementById('sticky-contact');
-    const header = document.querySelector('.hero-section');
     
-    if (!stickyContact || !header) {
-      console.warn('StickyContact: Elements not found');
+    if (!stickyContact) {
+      console.warn('StickyContact: sticky contact element not found');
       return;
     }
 
-    console.log('StickyContact: Initializing scroll animation');
+    // Get the showAt parameter from the element
+    const showAt = parseFloat(stickyContact.getAttribute('data-show-at') || '0.15');
+    
+    console.log(`StickyContact: Initializing scroll animation (show at ${showAt * 100}%)`);
 
     // Initially hide the sticky contact
     gsap.set(stickyContact, { y: 100, opacity: 0 });
 
-    // Show when header scrolls out of view
+    // Show after scrolling down to specified progress
     ScrollTrigger.create({
-      trigger: header,
-      start: "bottom top",
-      onEnter: () => {
-        console.log('Header scrolled out - showing sticky contact');
-        gsap.to(stickyContact, {
-          y: 0,
-          opacity: 1,
-          duration: 0.3,
-          ease: "power2.out"
-        });
-      },
-      onLeaveBack: () => {
-        console.log('Header back in view - hiding sticky contact');
-        gsap.to(stickyContact, {
-          y: 100,
-          opacity: 0,
-          duration: 0.3,
-          ease: "power2.out"
-        });
+      trigger: "body",
+      start: "top top-=100",
+      end: "max",
+      onUpdate: self => {
+        if (self.progress > showAt) {
+          gsap.to(stickyContact, {
+            y: 0,
+            opacity: 1,
+            duration: 0.3,
+            ease: "power2.out"
+          });
+        } else {
+          gsap.to(stickyContact, {
+            y: 100,
+            opacity: 0,
+            duration: 0.3,
+            ease: "power2.out"
+          });
+        }
       }
     });
   }

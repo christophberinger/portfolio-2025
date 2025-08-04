@@ -133,7 +133,7 @@
   }
 }
 
-/* Reduced motion support */
+/* Reduced motion support - disable text animations but keep logos */
 @media (prefers-reduced-motion: reduce) {
   .animated-text .word {
     opacity: 1 !important;
@@ -144,9 +144,10 @@
     background: rgba(255, 255, 255, 0.1) !important;
   }
   
-  .logo-row {
+  /* Keep logo animations running even with reduced motion preference */
+  /* .logo-row {
     animation: none !important;
-  }
+  } */
 }
 
 /* Mobile adjustments */

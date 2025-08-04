@@ -20,6 +20,13 @@ const { delay = 0, duration = 0.6, class: className = "" } = Astro.props;
   gsap.registerPlugin(ScrollTrigger);
 
   function initFadeIn() {
+    // Respect reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+      console.log('Reduced motion preferred - skipping fade animations');
+      return;
+    }
+    
     const fadeElements = document.querySelectorAll(".fade-in");
     
     // Only refresh once at start, not in loop

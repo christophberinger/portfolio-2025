@@ -31,6 +31,13 @@ const {
   gsap.registerPlugin(ScrollTrigger);
 
   function initAnimatedTexts() {
+    // Respect reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+      console.log('Reduced motion preferred - skipping text animations');
+      return;
+    }
+    
     const animatedTexts = document.querySelectorAll("[data-animate-text]");
 
     animatedTexts.forEach((element) => {
@@ -57,17 +64,17 @@ const {
 
       const wordSpans = textElement.querySelectorAll(".word");
 
-      // Set initial state - simplified
+      // Set initial state - prevent layout shift
       gsap.set(wordSpans, {
         opacity: 0,
-        y: 8,
-        // Removed scale for less visual noise
+        y: 0, // No initial offset to prevent scrollbar
+        transform: "translateY(8px)", // Use transform instead
       });
 
       const animateWords = () => {
         gsap.to(wordSpans, {
           opacity: 1,
-          y: 0,
+          transform: "translateY(0px)",
           duration: 0.4,
           stagger: 0.06,
           ease: "power2.out",
@@ -129,9 +136,15 @@ const {
 </script>
 
 <style>
+  .animated-text {
+    /* Prevent layout shifts */
+    overflow: hidden;
+  }
+  
   .animated-text .word {
-    display: flex;
+    display: inline-block;
     margin-right: 0.25em;
+    will-change: transform, opacity;
   }
 
   .animated-text .highlight {
