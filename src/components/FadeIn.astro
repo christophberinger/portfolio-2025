@@ -1,0 +1,81 @@
+---
+// Simple fade-in animation component for content below the fold
+export interface Props {
+  delay?: number;
+  duration?: number;
+  class?: string;
+}
+
+const { delay = 0, duration = 0.6, class: className = "" } = Astro.props;
+---
+
+<div class={`fade-in ${className}`} data-delay={delay} data-duration={duration}>
+  <slot />
+</div>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  function initFadeIn() {
+    const fadeElements = document.querySelectorAll(".fade-in");
+
+    fadeElements.forEach((element) => {
+      const delay = parseFloat(element.getAttribute("data-delay") || "0");
+      const duration = parseFloat(
+        element.getAttribute("data-duration") || "0.8"
+      );
+
+      // Start invisible
+      gsap.set(element, {
+        opacity: 0,
+        y: 10,
+        filter: "blur(20px)",
+      });
+
+      // Animate in when element comes into view
+      ScrollTrigger.create({
+        trigger: element,
+        start: "top 80%",
+        onEnter: () => {
+          gsap.to(element, {
+            opacity: 1,
+            y: 0,
+            filter: "blur(0px)",
+            duration: duration,
+            delay: delay,
+            ease: "power2.out",
+          });
+        },
+      });
+    });
+  }
+
+  // Initialize when DOM is ready
+  document.addEventListener("DOMContentLoaded", initFadeIn);
+
+  // Handle Astro page transitions
+  document.addEventListener("astro:page-load", initFadeIn);
+
+  // Also try immediate initialization
+  if (document.readyState !== "loading") {
+    initFadeIn();
+  }
+</script>
+
+<style>
+  .fade-in {
+    /* Will be set by JavaScript, but fallback for no-JS */
+    opacity: 1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fade-in {
+      opacity: 1 !important;
+      transform: none !important;
+      filter: none !important;
+    }
+  }
+</style>

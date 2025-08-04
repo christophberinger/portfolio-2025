@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import DeliverablesGrid from "../components/DeliverablesGrid.astro";
 import BrandLogos from "../components/BrandLogos.astro";
 import AnimatedText from "../components/AnimatedText.astro";
+import FadeIn from "../components/FadeIn.astro";
 import StickyContact from "../components/StickyContact.astro";
 import ContactSection from "../components/ContactSection.astro";
 import Footer from "../components/Footer.astro";
@@ -82,74 +83,78 @@ const awards =
   </div>
 
   <section class="approach">
-    <AnimatedText>
+    <FadeIn>
       <h2>Crafting Interfaces, Shaping Organizations</h2>
-    </AnimatedText>
-    <AnimatedText>
+    </FadeIn>
+    <FadeIn delay={0.1}>
       <p>
         I design and build digital experiences — and the systems behind them.
         That includes automation roadmaps, AI-informed org strategy, scalable
         design systems, MarTech modernization, and agent-based workflows.
       </p>
-    </AnimatedText>
+    </FadeIn>
   </section>
 
   <section class="track-record">
-    <AnimatedText>
+    <FadeIn>
       <h2>Proven Impact</h2>
-    </AnimatedText>
-    <AnimatedText>
+    </FadeIn>
+    <FadeIn delay={0.1}>
       <p>
         From startups to global brands, I've helped teams ship better products,
         adopt smarter workflows, and prepare for what's next — with hands-on
         execution and a strategic lens.
       </p>
-    </AnimatedText>
-    <AnimatedText>
+    </FadeIn>
+    <FadeIn delay={0.2}>
       <p>
         Whether I'm leading a UX engagement, coding prototypes, or consulting on
         intelligent systems, I bring deep curiosity, cross-functional fluency,
         and a strong bias for clarity and action.
       </p>
-    </AnimatedText>
+    </FadeIn>
   </section>
 
   <div class="deliverables-section">
-    <DeliverablesGrid deliverables={deliverables} />
+    <FadeIn delay={0.2}>
+      <DeliverablesGrid deliverables={deliverables} />
+    </FadeIn>
   </div>
 
   <div class="overview">
     <div class="column">
-      <AnimatedText>
+      <FadeIn>
         <h4>My Everyday Stack (and Then Some)</h4>
-      </AnimatedText>
-      <AnimatedText>
+      </FadeIn>
+      <FadeIn delay={0.1}>
         <div class="tools-content">{tools}</div>
-      </AnimatedText>
+      </FadeIn>
     </div>
   </div>
 
-  <BrandLogos />
+  <FadeIn>
+    <BrandLogos />
+  </FadeIn>
 
   <div class="overview">
     <div class="column">
-      <AnimatedText>
+      <FadeIn>
         <h4>Certified by People in Blazers</h4>
-      </AnimatedText>
-      <AnimatedText>
+      </FadeIn>
+      <FadeIn delay={0.1}>
         <div class="awards-content">{awards}</div>
-      </AnimatedText>
+      </FadeIn>
     </div>
   </div>
 
   <section class="cta-intro">
-    <AnimatedText highlight={["resilient", "ready for what's next"]}>
+    <FadeIn>
       <p class="mission">
         <strong
           >Let's build something resilient — and ready for what's next.</strong
         >
       </p>
-    </AnimatedText>
+    </FadeIn>
   </section>
 
   <ContactSection />
