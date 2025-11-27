@@ -7,11 +7,13 @@ import "../styles/animations.css";
 interface Props {
   title?: string;
   description?: string;
+  bodyClass?: string;
 }
 
 const {
   title = "Christoph Beringer - Freelance UX Leader & Technologist | Strategy, Design & Code for the AI Age",
   description = "Freelance UX Leader with 20+ years experience in strategy, design, and engineering. I help organizations think better, build faster, and adapt confidently to AI-shaped, systems-driven world.",
+  bodyClass = "",
 } = Astro.props;
 ---
 
@@ -79,7 +81,7 @@ const {
     </script>
     <title>{title}</title>
   </head>
-  <body>
+  <body class={bodyClass}>
     <div id="content">
       <Header />
       <main id="main-content" role="main">

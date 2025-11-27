@@ -4,11 +4,29 @@ import Footer from "../components/Footer.astro";
 import FadeIn from "../components/FadeIn.astro";
 ---
 
-<Layout title="WebPeasy - WordPress WebP Optimization Plugin">
+<Layout title="WebPeasy - WordPress WebP Optimization Plugin" bodyClass="webpeasy-theme">
   <style is:global>
-    body {
+    /* Nur für WebPeasy-Seite */
+    body.webpeasy-theme {
       background-color: rgb(193, 255, 209) !important;
-      color: rgb(193, 255, 209) !important;
+    }
+
+    /* Logo Farbe nur auf WebPeasy-Seite */
+    body.webpeasy-theme .header .logo svg path {
+      stroke: #098c73 !important;
+    }
+
+    /* Button Farbe nur auf WebPeasy-Seite */
+    body.webpeasy-theme .header .contact-button {
+      background-color: #098c73 !important;
+      color: white !important;
+    }
+
+    body.webpeasy-theme .header .contact-button:hover,
+    body.webpeasy-theme .header .contact-button:focus {
+      background-color: #076d5a !important;
+      color: white !important;
+      box-shadow: 0 0 0 3px rgba(9, 140, 115, 0.3) !important;
     }
   </style>
   <div class="webpeasy-page">
@@ -255,7 +273,7 @@ import FadeIn from "../components/FadeIn.astro";
       min-height: 100vh;
     }
 
-    * {
+    h2 {
       color: #212427 !important;
     }
 
