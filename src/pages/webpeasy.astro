@@ -8,6 +8,7 @@ import FadeIn from "../components/FadeIn.astro";
   <style is:global>
     body {
       background-color: rgb(193, 255, 209) !important;
+      color: rgb(193, 255, 209) !important;
     }
   </style>
   <div class="webpeasy-page">
@@ -19,8 +20,9 @@ import FadeIn from "../components/FadeIn.astro";
     <FadeIn delay={0.1}>
       <section class="intro">
         <p class="lead">
-          Automatically deliver frontend images as WebP with PHP-based URL rewriting,
-          while leaving the Media Library and original files untouched.
+          Automatically deliver frontend images as WebP with PHP-based URL
+          rewriting, while leaving the Media Library and original files
+          untouched.
         </p>
         <div class="download-section">
           <a
@@ -30,7 +32,9 @@ import FadeIn from "../components/FadeIn.astro";
             class="download-button"
           >
             <svg width="24" height="24" viewBox="0 0 16 16" fill="currentColor">
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+              <path
+                d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+              ></path>
             </svg>
             Get Plugin on GitHub
           </a>
@@ -43,9 +47,9 @@ import FadeIn from "../components/FadeIn.astro";
       <section class="description">
         <h2>Description</h2>
         <p>
-          WebPeasy is a production-ready WordPress solution that automatically converts
-          all frontend images to WebP format while leaving your Media Library and original
-          files completely untouched.
+          WebPeasy is a production-ready WordPress solution that automatically
+          converts all frontend images to WebP format while leaving your Media
+          Library and original files completely untouched.
         </p>
       </section>
     </FadeIn>
@@ -54,15 +58,42 @@ import FadeIn from "../components/FadeIn.astro";
       <section class="features">
         <h2>Key Features</h2>
         <ul>
-          <li><strong>Non-Destructive:</strong> Original files remain unchanged in your Media Library</li>
-          <li><strong>Automatic Conversion:</strong> All generated image sizes (thumbnails, medium, large, custom) are created as WebP</li>
-          <li><strong>Built-in Regeneration:</strong> Bulk regenerate all existing images with real-time progress tracking</li>
-          <li><strong>Smart URL Rewriting:</strong> PHP-based output buffering automatically serves WebP versions</li>
-          <li><strong>Universal Compatibility:</strong> Works on any server (Apache, Nginx, LiteSpeed) - no .htaccess needed</li>
-          <li><strong>Browser Detection:</strong> Automatically serves WebP only to browsers that support it</li>
-          <li><strong>Global Quality Control:</strong> Single slider to configure WebP compression quality (0-100)</li>
-          <li><strong>Smart Detection:</strong> Automatically detects WebP support in your PHP environment</li>
-          <li><strong>Graceful Fallback:</strong> Works seamlessly on servers without WebP support</li>
+          <li>
+            <strong>Non-Destructive:</strong> Original files remain unchanged in
+            your Media Library
+          </li>
+          <li>
+            <strong>Automatic Conversion:</strong> All generated image sizes (thumbnails,
+            medium, large, custom) are created as WebP
+          </li>
+          <li>
+            <strong>Built-in Regeneration:</strong> Bulk regenerate all existing
+            images with real-time progress tracking
+          </li>
+          <li>
+            <strong>Smart URL Rewriting:</strong> PHP-based output buffering automatically
+            serves WebP versions
+          </li>
+          <li>
+            <strong>Universal Compatibility:</strong> Works on any server (Apache,
+            Nginx, LiteSpeed) - no .htaccess needed
+          </li>
+          <li>
+            <strong>Browser Detection:</strong> Automatically serves WebP only to
+            browsers that support it
+          </li>
+          <li>
+            <strong>Global Quality Control:</strong> Single slider to configure WebP
+            compression quality (0-100)
+          </li>
+          <li>
+            <strong>Smart Detection:</strong> Automatically detects WebP support
+            in your PHP environment
+          </li>
+          <li>
+            <strong>Graceful Fallback:</strong> Works seamlessly on servers without
+            WebP support
+          </li>
         </ul>
       </section>
     </FadeIn>
@@ -71,9 +102,11 @@ import FadeIn from "../components/FadeIn.astro";
       <section class="how-it-works">
         <h2>How It Works</h2>
         <p>
-          The plugin uses WordPress's built-in <code>image_editor_output_format</code> filter
-          to convert newly uploaded images to WebP format. For existing images, it uses PHP
-          output buffering to automatically replace image URLs with WebP versions when:
+          The plugin uses WordPress's built-in <code
+            >image_editor_output_format</code
+          > filter to convert newly uploaded images to WebP format. For existing
+          images, it uses PHP output buffering to automatically replace image URLs
+          with WebP versions when:
         </p>
         <ol>
           <li>The browser supports WebP (detected via HTTP Accept header)</li>
@@ -81,8 +114,8 @@ import FadeIn from "../components/FadeIn.astro";
           <li>The request is for a frontend page (not admin/AJAX/cron)</li>
         </ol>
         <p>
-          Original JPG/PNG files are preserved alongside WebP versions, providing automatic
-          fallback for older browsers.
+          Original JPG/PNG files are preserved alongside WebP versions,
+          providing automatic fallback for older browsers.
         </p>
       </section>
     </FadeIn>
@@ -91,8 +124,8 @@ import FadeIn from "../components/FadeIn.astro";
       <section class="regeneration">
         <h2>Built-in Thumbnail Regeneration</h2>
         <p>
-          Navigate to Settings → WebPeasy and use the built-in regeneration tool to convert
-          all existing images:
+          Navigate to Settings → WebPeasy and use the built-in regeneration tool
+          to convert all existing images:
         </p>
         <ul>
           <li>Real-time progress tracking</li>
@@ -119,10 +152,16 @@ import FadeIn from "../components/FadeIn.astro";
       <section class="installation">
         <h2>Installation</h2>
         <ol>
-          <li>Upload the <code>webpeasy</code> folder to <code>/wp-content/plugins/</code></li>
+          <li>
+            Upload the <code>webpeasy</code> folder to <code
+              >/wp-content/plugins/</code
+            >
+          </li>
           <li>Activate the plugin through the 'Plugins' menu in WordPress</li>
           <li>Go to Settings → WebPeasy to configure</li>
-          <li>(Optional) Click "Regenerate Thumbnails" to convert existing images</li>
+          <li>
+            (Optional) Click "Regenerate Thumbnails" to convert existing images
+          </li>
         </ol>
       </section>
     </FadeIn>
@@ -134,48 +173,51 @@ import FadeIn from "../components/FadeIn.astro";
         <div class="faq-item">
           <h3>Will this slow down my site?</h3>
           <p>
-            No. Conversion happens during upload, not on page load. The PHP URL rewriting
-            adds minimal overhead (~10-20ms) but the smaller WebP files load much faster,
-            resulting in net performance gains.
+            No. Conversion happens during upload, not on page load. The PHP URL
+            rewriting adds minimal overhead (~10-20ms) but the smaller WebP
+            files load much faster, resulting in net performance gains.
           </p>
         </div>
 
         <div class="faq-item">
           <h3>Does it work on Nginx/LiteSpeed?</h3>
           <p>
-            Yes! Unlike .htaccess-based solutions, this plugin works on any server because
-            it uses PHP output buffering.
+            Yes! Unlike .htaccess-based solutions, this plugin works on any
+            server because it uses PHP output buffering.
           </p>
         </div>
 
         <div class="faq-item">
           <h3>Do I need to delete my old images?</h3>
           <p>
-            No. Original JPG/PNG files are preserved alongside WebP versions. This provides
-            automatic fallback for older browsers.
+            No. Original JPG/PNG files are preserved alongside WebP versions.
+            This provides automatic fallback for older browsers.
           </p>
         </div>
 
         <div class="faq-item">
           <h3>What if my host doesn't support WebP?</h3>
           <p>
-            The plugin will detect this and gracefully do nothing. No errors, no broken images.
+            The plugin will detect this and gracefully do nothing. No errors, no
+            broken images.
           </p>
         </div>
 
         <div class="faq-item">
           <h3>Will this work with caching plugins?</h3>
           <p>
-            Yes. The rewriting happens before page caching, so cached pages will already have
-            WebP URLs. Make sure to clear your cache after regenerating images.
+            Yes. The rewriting happens before page caching, so cached pages will
+            already have WebP URLs. Make sure to clear your cache after
+            regenerating images.
           </p>
         </div>
 
         <div class="faq-item">
           <h3>Can I revert to JPEG/PNG?</h3>
           <p>
-            Yes. Simply deactivate the plugin. Original files were never changed, so your site
-            will work immediately with the original images.
+            Yes. Simply deactivate the plugin. Original files were never
+            changed, so your site will work immediately with the original
+            images.
           </p>
         </div>
       </section>
@@ -209,8 +251,12 @@ import FadeIn from "../components/FadeIn.astro";
       margin: 0 auto;
       padding: 2rem 1rem;
       background-color: rgb(193, 255, 209);
-      color: #212427;
+      color: #212427 !important;
       min-height: 100vh;
+    }
+
+    * {
+      color: #212427 !important;
     }
 
     h1 {
@@ -291,7 +337,8 @@ import FadeIn from "../components/FadeIn.astro";
       line-height: 1.7;
     }
 
-    ul, ol {
+    ul,
+    ol {
       margin-bottom: 1.5rem;
       padding-left: 1.5rem;
     }
@@ -304,7 +351,6 @@ import FadeIn from "../components/FadeIn.astro";
     .faq-item {
       margin-bottom: 2rem;
       padding-bottom: 2rem;
-      border-bottom: 1px solid var(--color-border, #e5e5e5);
     }
 
     .faq-item:last-child {
@@ -312,11 +358,12 @@ import FadeIn from "../components/FadeIn.astro";
     }
 
     code {
-      background-color: var(--color-code-bg, #f5f5f5);
+      background-color: #098c73;
       padding: 0.2rem 0.4rem;
       border-radius: 3px;
-      font-family: 'Courier New', monospace;
+      font-family: monospace;
       font-size: 0.9em;
+      color: #fff !important;
     }
 
     dl {
