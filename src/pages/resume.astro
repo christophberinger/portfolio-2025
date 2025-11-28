@@ -1,0 +1,2091 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Footer from "../components/Footer.astro";
+import FadeIn from "../components/FadeIn.astro";
+---
+
+<Layout
+  title="Resume - Christoph Beringer"
+  bodyClass="resume-theme"
+  robots="noindex"
+>
+  <style is:global>
+    /* Inverted theme for header on resume page */
+    body.resume-theme .header .logo svg path {
+      stroke: #1a1a1a !important;
+    }
+
+    body.resume-theme .header .contact-button {
+      background-color: #1a1a1a !important;
+      color: #ffffff !important;
+    }
+
+    body.resume-theme .header .contact-button:hover,
+    body.resume-theme .header .contact-button:focus {
+      background-color: #2563eb !important;
+      color: white !important;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3) !important;
+    }
+  </style>
+
+  <div class="resume-page">
+    <!-- Password Gate -->
+    <div id="password-gate" class="password-gate">
+      <div class="password-container">
+        <h1>Protected Content</h1>
+        <p>Please enter the password to view this page.</p>
+        <form id="password-form">
+          <input
+            type="password"
+            id="password-input"
+            placeholder="Enter password"
+            autocomplete="off"
+          />
+          <button type="submit">Access</button>
+        </form>
+        <p id="error-message" class="error-message"></p>
+      </div>
+    </div>
+
+    <!-- Main Content (hidden until password is correct) -->
+    <div id="resume-content" class="resume-content" style="display: none;">
+      <!-- Language Toggle -->
+      <div class="language-toggle">
+        <button id="lang-de" class="lang-btn active">DE</button>
+        <button id="lang-en" class="lang-btn">EN</button>
+      </div>
+
+      <FadeIn>
+        <div class="profile-header">
+          <img
+            src="/profile-photo.jpg"
+            alt="Christoph Beringer"
+            class="profile-photo"
+          />
+          <div class="profile-title">
+            <h1>Christoph Beringer</h1>
+            <p class="subtitle">UX Leader & Technologist</p>
+          </div>
+        </div>
+      </FadeIn>
+
+      <!-- German Content -->
+      <div id="content-de" class="language-content">
+        <FadeIn delay={0.1}>
+          <section class="profile-section">
+            <h2>
+              <svg
+                class="icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+              >
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              Profil
+            </h2>
+            <p class="lead">
+              Seit über 15 Jahren arbeite ich an der Schnittstelle von Design,
+              User Experience und Engineering. Mein Spektrum reicht von
+              digitalen Markenauftritten und Marketing-Websites bis zu komplexen
+              Plattformen, Design Systems, datenintensiven Interfaces und
+              KI-gestützten Automationslösungen für große Organisationen.
+            </p>
+            <p>
+              Mein Fokus liegt auf digitalen Systemen, in denen viele Daten,
+              Prozesse und Nutzergruppen zusammenkommen. Durch die Verbindung
+              aus strategischer Klarheit, technischem Verständnis und präziser
+              UX-Konzeption übersetze ich komplexe Anforderungen in klare,
+              robuste und skalierbare Interfaces.
+            </p>
+            <p>
+              Ich betrachte digitale Ökosysteme ganzheitlich – fachlich,
+              technisch und organisatorisch – und entwickle Lösungen, die
+              langfristig funktionieren und operativ tragfähig sind.
+            </p>
+          </section>
+        </FadeIn>
+
+        <FadeIn delay={0.15}>
+          <section class="bio-section">
+            <h2>
+              <svg
+                class="icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+              >
+                <path d="M12 2v20M2 12h20"></path>
+              </svg>
+              Kurz-Biografie
+            </h2>
+            <ul class="bio-list">
+              <li>Freelance UX Leader & Technologist (15+ Jahre)</li>
+              <li>Associate UX Director – Razorfish</li>
+              <li>Director Information Architecture – UDG</li>
+              <li>
+                Hintergrund in UX, Systemarchitektur, UI, technischer Konzeption
+                und Prototyping
+              </li>
+            </ul>
+          </section>
+        </FadeIn>
+
+        <FadeIn delay={0.2}>
+          <section class="competencies-section">
+            <h2>
+              <svg
+                class="icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+              >
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg>
+              Kompetenzschwerpunkte
+            </h2>
+
+            <div class="competency-grid">
+              <div class="competency-card">
+                <h3>Platform & Systems Thinking</h3>
+                <p>
+                  Erfahrung in der Strukturierung, Skalierung und
+                  Weiterentwicklung großer, modularer und über Jahre gewachsener
+                  digitaler Plattformen: Datenintegration, Rollen- &
+                  Berechtigungsmodelle, komplexe Prozessketten,
+                  Multi-Service-Architekturen.
+                </p>
+                <div class="brand-pills">
+                  <span class="brand-pill">Audi</span>
+                  <span class="brand-pill">dm</span>
+                  <span class="brand-pill">Deutsche Bahn</span>
+                  <span class="brand-pill">Volkswagen Group</span>
+                </div>
+              </div>
+
+              <div class="competency-card">
+                <h3>Data-Intensive UX & Monitoring Interfaces</h3>
+                <p>
+                  Konzeption von Interfaces für Datenanalyse, Controlling,
+                  KPI-Monitoring und operative Steuerung. Bei dm u. a.
+                  Entwicklung von internen Plattformen für Budget- und
+                  Ressourcensteuerung, Reporting, KPI-Dashboards und
+                  Prozessautomatisierung.
+                </p>
+                <div class="brand-pills">
+                  <span class="brand-pill">dm</span>
+                  <span class="brand-pill">MAN</span>
+                  <span class="brand-pill">Telefónica</span>
+                </div>
+              </div>
+
+              <div class="competency-card">
+                <h3>AI, Automation & Intelligent Workflows</h3>
+                <p>
+                  Design AI-unterstützter Workflows, LLM-basierter Interaktionen
+                  und prozessorientierter Automation. Erfahrung in der
+                  Integration solcher Systeme in bestehende Plattformen und
+                  Organisationen.
+                </p>
+                <div class="brand-pills">
+                  <span class="brand-pill">dm</span>
+                  <span class="brand-pill">Audi</span>
+                </div>
+              </div>
+
+              <div class="competency-card">
+                <h3>Design Systems & Skalierbare Interface-Architekturen</h3>
+                <p>
+                  Konzeption und Implementierung von Design Systems mit Fokus
+                  auf: Token-Architekturen, Component Libraries,
+                  Governance-Modelle, dokumentierte Interaktionsmuster und
+                  cross-team Skalierbarkeit.
+                </p>
+                <div class="brand-pills">
+                  <span class="brand-pill">dm Design System</span>
+                  <span class="brand-pill">Audi HMI</span>
+                  <span class="brand-pill">Volkswagen Group</span>
+                </div>
+              </div>
+
+              <div class="competency-card">
+                <h3>Design–Engineering Integration</h3>
+                <p>
+                  Praxisnahe technische Kompetenz in Frontend- und Backendlayern
+                  (React, TypeScript, JavaScript, PHP, Python, HTML/CSS sowie
+                  API-Arbeit und MySQL). Ermöglicht präzise technische
+                  Kommunikation, realistische UX-Konzepte und effizientes
+                  Engineering-Alignment.
+                </p>
+                <div class="brand-pills">
+                  <span class="brand-pill">Audi HMI</span>
+                  <span class="brand-pill">myAudi</span>
+                  <span class="brand-pill">dm Design System</span>
+                </div>
+              </div>
+
+              <div class="competency-card">
+                <h3>Strategische Produkt- und UX-Expertise</h3>
+                <p>
+                  Leitung von Discovery-Phasen, Requirements Engineering,
+                  Systemdefinitionen, Design-System-Architekturen sowie
+                  cross-functional Workshops für Enterprise-Projekte.
+                </p>
+                <div class="brand-pills">
+                  <span class="brand-pill">Audi</span>
+                  <span class="brand-pill">dm</span>
+                  <span class="brand-pill">Volkswagen Group</span>
+                </div>
+              </div>
+            </div>
+          </section>
+        </FadeIn>
+
+        <FadeIn delay={0.3}>
+          <section class="partnerships-section">
+            <h2>
+              <svg
+                class="icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+              >
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+              ⭐ Langjährige Schlüsselpartnerschaften
+            </h2>
+
+            <div class="partnership-card">
+              <div class="partnership-header">
+                <img
+                  src="/src/assets/brands/Dm.svg"
+                  alt="dm"
+                  class="partner-logo"
+                />
+                <div>
+                  <h3>dm — Digital Platforms, Automation & Brand Systems</h3>
+                  <p class="partnership-subtitle">
+                    Langjährige Zusammenarbeit als UX Lead & Technologist in
+                    zentralen digitalen Initiativen – von Plattformen über
+                    Design Systems bis zur KI-gestützten Prozessdigitalisierung.
+                  </p>
+                </div>
+              </div>
+              <div class="partnership-details">
+                <h4>Schwerpunkte</h4>
+                <ul>
+                  <li>
+                    <strong>AI-basierte Automations- und Marketing-Suite</strong
+                    ><br />(LLM-/Agentenworkflows, Datenmodelle, Prozesslogiken)
+                  </li>
+                  <li>
+                    <strong>Projektmanagement- & Controlling-Plattform</strong
+                    ><br />(Ressourcen, Budgetierung, KPI-Modelle)
+                  </li>
+                  <li>
+                    <strong
+                      >Digitaler Brand-Design-Relaunch & globales Design System</strong
+                    ><br />(Tokens, Komponenten, Patterns, Governance)
+                  </li>
+                  <li>
+                    <strong>Design System – frühere Generation</strong><br
+                    />(Grundstruktur für Marketing, Commerce, interne Tools)
+                  </li>
+                  <li><strong>dm.de Website & Online-Shop</strong></li>
+                  <li>
+                    <strong
+                      >App-Weiterentwicklung & Omnichannel Retail Experience</strong>
+                  </li>
+                  <li>
+                    <strong>Interne Automations- und Prozessplattformen</strong>
+                  </li>
+                  <li>
+                    <strong
+                      >Social-Media-Monitoring- & Insight-Dashboard</strong>
+                  </li>
+                </ul>
+                <p class="partnership-summary">
+                  Für dm habe ich über Jahre hinweg das digitale Fundament aus
+                  Brand, Plattformen, Commerce, Automation, Daten und AI mit
+                  aufgebaut.
+                </p>
+              </div>
+            </div>
+
+            <div class="partnership-card">
+              <div class="partnership-header">
+                <img
+                  src="/src/assets/brands/Audi.svg"
+                  alt="Audi"
+                  class="partner-logo"
+                />
+                <div>
+                  <h3>
+                    Audi — Digitales Ökosystem & Experience Transformation
+                  </h3>
+                  <p class="partnership-subtitle">
+                    Mehrjährige Arbeit an zentralen digitalen Experience- und
+                    Plattforminitiativen – über alle Touchpoints hinweg.
+                  </p>
+                </div>
+              </div>
+              <div class="partnership-details">
+                <h4>Schwerpunkte</h4>
+                <ul>
+                  <li>
+                    <strong
+                      >Digitaler Brand-Design-Relaunch & globales Design System</strong>
+                  </li>
+                  <li>
+                    <strong
+                      >Weltweite Produktseiten & Fahrzeugkonfigurator</strong>
+                  </li>
+                  <li>
+                    <strong>Connected Services Portal („myAudi Online")</strong>
+                  </li>
+                  <li><strong>myAudi App (iOS & Android)</strong></li>
+                  <li>
+                    <strong>Audi HMI – In-Car Interaction Architecture</strong>
+                  </li>
+                  <li>
+                    <strong>Chat-, Voice- und Dealer-Assistenzsysteme</strong>
+                  </li>
+                  <li>
+                    <strong>AR/VR Showcar Experiences & Future Concepts</strong>
+                  </li>
+                </ul>
+                <p class="partnership-summary">
+                  Bei Audi war ich an der systemischen Entwicklung des gesamten
+                  digitalen Experience-Ökosystems beteiligt.
+                </p>
+              </div>
+            </div>
+          </section>
+        </FadeIn>
+
+        <FadeIn delay={0.4}>
+          <section class="selected-projects-section">
+            <h2>
+              <svg
+                class="icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+              >
+                <path
+                  d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+                ></path>
+              </svg>
+              ⭐ Weitere ausgewählte Projekte
+            </h2>
+
+            <div class="projects-grid">
+              <div class="project-item">
+                <h4>DHL – XR Brand Guidelines & AR/VR Design System</h4>
+                <p>
+                  Immersive Interaktionsmuster, räumliche UI-Prinzipien,
+                  XR-Markenrichtlinien.
+                </p>
+              </div>
+
+              <div class="project-item">
+                <div class="project-with-logo">
+                  <img
+                    src="/src/assets/brands/EnBw.svg"
+                    alt="EnBW"
+                    class="project-logo"
+                  />
+                  <h4>EnBW – Smart Home App</h4>
+                </div>
+                <p>
+                  UI- und Interaktionsmodelle für IoT-Geräte, Zustandslogiken,
+                  Automationsszenarien.
+                </p>
+              </div>
+
+              <div class="project-item">
+                <h4>Seltra – AR Terrassenplaner</h4>
+                <p>AR-gestütztes Planungstool für Außenbereiche.</p>
+              </div>
+
+              <div class="project-item">
+                <h4>E-Commerce- & Markenplattformen</h4>
+                <div class="brand-logos-row">
+                  <img
+                    src="/src/assets/brands/Adidas.svg"
+                    alt="Adidas"
+                    class="inline-logo"
+                  />
+                  <img
+                    src="/src/assets/brands/Escada.svg"
+                    alt="Escada"
+                    class="inline-logo"
+                  />
+                  <img
+                    src="/src/assets/brands/HugoBoss.svg"
+                    alt="Hugo Boss"
+                    class="inline-logo"
+                  />
+                  <img
+                    src="/src/assets/brands/Porsche.svg"
+                    alt="Porsche"
+                    class="inline-logo"
+                  />
+                  <img
+                    src="/src/assets/brands/Ebay.svg"
+                    alt="eBay"
+                    class="inline-logo"
+                  />
+                </div>
+              </div>
+
+              <div class="project-item">
+                <h4>Corporate Reporting</h4>
+                <div class="brand-logos-row">
+                  <img
+                    src="/src/assets/brands/Man.svg"
+                    alt="MAN"
+                    class="inline-logo"
+                  />
+                  <img
+                    src="/src/assets/brands/Telefonica.svg"
+                    alt="Telefónica"
+                    class="inline-logo"
+                  />
+                </div>
+              </div>
+
+              <div class="project-item">
+                <div class="project-with-logo">
+                  <img
+                    src="/src/assets/brands/Steigenberger.svg"
+                    alt="Steigenberger"
+                    class="project-logo"
+                  />
+                  <h4>Hotel Booking Plattform</h4>
+                </div>
+                <p>Steigenberger / InterCity Hotels.</p>
+              </div>
+
+              <div class="project-item">
+                <h4>Frühe digitale Plattformen & Brand Experiences</h4>
+                <div class="brand-logos-row">
+                  <img
+                    src="/src/assets/brands/PorscheDesign.svg"
+                    alt="Porsche Design"
+                    class="inline-logo"
+                  />
+                  <img
+                    src="/src/assets/brands/Volkswagen.svg"
+                    alt="Volkswagen"
+                    class="inline-logo"
+                  />
+                </div>
+                <p>Porsche Design, Audi A1 Launch, Volkswagen Group DRIVE.</p>
+              </div>
+            </div>
+          </section>
+        </FadeIn>
+
+        <FadeIn delay={0.5}>
+          <section class="value-section">
+            <h2>
+              <svg
+                class="icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+              >
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              Wertbeitrag
+            </h2>
+            <p class="lead">
+              Ich kann komplexe technische Systeme, Datenstrukturen und
+              Prozesslandschaften schnell erfassen, ordnen und in präzise,
+              skalierbare Interfaces übersetzen.
+            </p>
+            <p>
+              Meine Erfahrung in Enterprise-Plattformen, AI-/Automation
+              Workflows, Design Systems und datenintensiver UX ermöglicht
+              Lösungen, die sowohl technisch belastbar als auch operativ
+              einsetzbar sind.
+            </p>
+            <p>
+              Das macht mich besonders geeignet für Projekte, die Geräte,
+              Datenquellen, Monitoring-, Steuerungs- und intelligente
+              Workflow-Systeme in einer klaren, zuverlässigen User Experience
+              zusammenführen – wie etwa eine umfassende
+              Energymanagement-Plattform.
+            </p>
+          </section>
+        </FadeIn>
+
+        <FadeIn delay={0.6}>
+          <section class="cta-section">
+            <h2>Lust auf ein gemeinsames Projekt?</h2>
+            <p class="lead">Ich freue mich, euch kennenzulernen.</p>
+            <a href="mailto:hello@beringer.io" class="cta-button">
+              Nachricht schreiben
+            </a>
+          </section>
+        </FadeIn>
+      </div>
+
+      <!-- English Content -->
+      <div id="content-en" class="language-content" style="display: none;">
+        <FadeIn delay={0.1}>
+          <section class="profile-section">
+            <h2>
+              <svg
+                class="icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+              >
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              Profile
+            </h2>
+            <p class="lead">
+              For more than 15 years, I've been working at the intersection of
+              Design, User Experience and Engineering. My experience ranges from
+              digital brand experiences and marketing websites to complex
+              platforms, Design Systems, data-intensive interfaces and AI-driven
+              automation solutions for large organizations.
+            </p>
+            <p>
+              My focus is on digital systems where data, processes and user
+              roles converge. By combining strategic clarity, technical fluency
+              and precise UX architecture, I translate complexity into clear,
+              robust and scalable interfaces.
+            </p>
+            <p>
+              I approach digital ecosystems holistically — functionally,
+              technically and organizationally — and design solutions that
+              remain reliable, maintainable and meaningful over time.
+            </p>
+          </section>
+        </FadeIn>
+
+        <FadeIn delay={0.15}>
+          <section class="bio-section">
+            <h2>
+              <svg
+                class="icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+              >
+                <path d="M12 2v20M2 12h20"></path>
+              </svg>
+              Short Bio
+            </h2>
+            <ul class="bio-list">
+              <li>Freelance UX Leader & Technologist (15+ years)</li>
+              <li>Associate UX Director – Razorfish</li>
+              <li>Director Information Architecture – UDG</li>
+              <li>
+                Background in UX, system architecture, UI, technical concepting
+                and prototyping
+              </li>
+            </ul>
+          </section>
+        </FadeIn>
+
+        <FadeIn delay={0.2}>
+          <section class="competencies-section">
+            <h2>
+              <svg
+                class="icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+              >
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg>
+              Core Competencies
+            </h2>
+
+            <div class="competency-grid">
+              <div class="competency-card">
+                <h3>Platform & Systems Thinking</h3>
+                <p>
+                  Experience in structuring, scaling, and evolving large,
+                  modular, and organically grown digital platforms: data
+                  integration, role & permission models, complex process chains,
+                  multi-service architectures.
+                </p>
+                <div class="brand-pills">
+                  <span class="brand-pill">Audi</span>
+                  <span class="brand-pill">dm</span>
+                  <span class="brand-pill">Deutsche Bahn</span>
+                  <span class="brand-pill">Volkswagen Group</span>
+                </div>
+              </div>
+
+              <div class="competency-card">
+                <h3>Data-Intensive UX & Monitoring Interfaces</h3>
+                <p>
+                  Design of interfaces for data analysis, controlling, KPI
+                  monitoring, and operational management. At dm, among others,
+                  development of internal platforms for budget and resource
+                  management, reporting, KPI dashboards, and process automation.
+                </p>
+                <div class="brand-pills">
+                  <span class="brand-pill">dm</span>
+                  <span class="brand-pill">MAN</span>
+                  <span class="brand-pill">Telefónica</span>
+                </div>
+              </div>
+
+              <div class="competency-card">
+                <h3>AI, Automation & Intelligent Workflows</h3>
+                <p>
+                  Design of AI-enhanced workflows, LLM-based interactions, and
+                  process-oriented automation. Experience in integrating such
+                  systems into existing platforms and organizations.
+                </p>
+                <div class="brand-pills">
+                  <span class="brand-pill">dm</span>
+                  <span class="brand-pill">Audi</span>
+                </div>
+              </div>
+
+              <div class="competency-card">
+                <h3>Design Systems & Scalable Interface Architectures</h3>
+                <p>
+                  Conception and implementation of Design Systems with focus on:
+                  token architectures, component libraries, governance models,
+                  documented interaction patterns, and cross-team scalability.
+                </p>
+                <div class="brand-pills">
+                  <span class="brand-pill">dm Design System</span>
+                  <span class="brand-pill">Audi HMI</span>
+                  <span class="brand-pill">Volkswagen Group</span>
+                </div>
+              </div>
+
+              <div class="competency-card">
+                <h3>Design–Engineering Integration</h3>
+                <p>
+                  Hands-on technical competence across frontend and backend
+                  layers (React, TypeScript, JavaScript, PHP, Python, HTML/CSS,
+                  as well as API work and MySQL). Enables precise technical
+                  communication, realistic UX concepts, and efficient
+                  engineering alignment.
+                </p>
+                <div class="brand-pills">
+                  <span class="brand-pill">Audi HMI</span>
+                  <span class="brand-pill">myAudi</span>
+                  <span class="brand-pill">dm Design System</span>
+                </div>
+              </div>
+
+              <div class="competency-card">
+                <h3>Strategic Product & UX Expertise</h3>
+                <p>
+                  Leadership of discovery phases, requirements engineering,
+                  system definitions, design system architectures, and
+                  cross-functional workshops for enterprise projects.
+                </p>
+                <div class="brand-pills">
+                  <span class="brand-pill">Audi</span>
+                  <span class="brand-pill">dm</span>
+                  <span class="brand-pill">Volkswagen Group</span>
+                </div>
+              </div>
+            </div>
+          </section>
+        </FadeIn>
+
+        <FadeIn delay={0.3}>
+          <section class="partnerships-section">
+            <h2>
+              <svg
+                class="icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+              >
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+              ⭐ Long-Term Key Partnerships
+            </h2>
+
+            <div class="partnership-card">
+              <div class="partnership-header">
+                <img
+                  src="/src/assets/brands/Dm.svg"
+                  alt="dm"
+                  class="partner-logo"
+                />
+                <div>
+                  <h3>dm — Digital Platforms, Automation & Brand Systems</h3>
+                  <p class="partnership-subtitle">
+                    Long-standing collaboration as UX Lead & Technologist across
+                    several of dm's core digital initiatives — from platforms
+                    and Design Systems to AI-driven process automation.
+                  </p>
+                </div>
+              </div>
+              <div class="partnership-details">
+                <h4>Focus areas</h4>
+                <ul>
+                  <li>
+                    <strong>AI-based marketing & automation suite</strong><br
+                    />LLM- and agent-powered workflows, data models, process
+                    architectures
+                  </li>
+                  <li>
+                    <strong
+                      >International project management & controlling platform</strong
+                    ><br />Budgeting, resource planning, KPI modeling, reporting
+                    structures
+                  </li>
+                  <li>
+                    <strong
+                      >Digital brand redesign & global Design System</strong
+                    ><br />Token architecture, component libraries, interaction
+                    patterns, governance
+                  </li>
+                  <li>
+                    <strong>Design System — earlier generation</strong><br
+                    />Foundation for marketing, commerce and internal tools
+                  </li>
+                  <li><strong>dm.de website & online shop</strong></li>
+                  <li>
+                    <strong
+                      >App evolution & omnichannel retail experiences</strong>
+                  </li>
+                  <li>
+                    <strong
+                      >Internal automation tools & operational platforms</strong>
+                  </li>
+                  <li>
+                    <strong>Social media monitoring & insight dashboard</strong>
+                  </li>
+                </ul>
+                <p class="partnership-summary">
+                  For dm, I helped build and evolve the digital foundation
+                  across brand, platforms, commerce, automation, data and AI.
+                </p>
+              </div>
+            </div>
+
+            <div class="partnership-card">
+              <div class="partnership-header">
+                <img
+                  src="/src/assets/brands/Audi.svg"
+                  alt="Audi"
+                  class="partner-logo"
+                />
+                <div>
+                  <h3>Audi — Digital Ecosystem & Experience Transformation</h3>
+                  <p class="partnership-subtitle">
+                    Years of involvement in Audi's core digital ecosystem as a
+                    UX Lead — spanning brand, HMI, web, app, services and future
+                    concepts.
+                  </p>
+                </div>
+              </div>
+              <div class="partnership-details">
+                <h4>Focus areas</h4>
+                <ul>
+                  <li>
+                    <strong
+                      >Digital brand redesign & global Design System</strong>
+                  </li>
+                  <li>
+                    <strong
+                      >Relaunch of global product pages & vehicle configurators</strong>
+                  </li>
+                  <li>
+                    <strong>Connected Services Portal ("myAudi Online")</strong>
+                  </li>
+                  <li><strong>myAudi app (iOS & Android)</strong></li>
+                  <li>
+                    <strong>Audi HMI — in-car interaction architecture</strong>
+                  </li>
+                  <li>
+                    <strong>Chat, voice and dealer assistant systems</strong>
+                  </li>
+                  <li>
+                    <strong
+                      >AR/VR showcar and future concept experiences</strong>
+                  </li>
+                </ul>
+                <p class="partnership-summary">
+                  At Audi, I contributed to the systemic development of the
+                  entire digital experience ecosystem.
+                </p>
+              </div>
+            </div>
+          </section>
+        </FadeIn>
+
+        <FadeIn delay={0.4}>
+          <section class="selected-projects-section">
+            <h2>
+              <svg
+                class="icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+              >
+                <path
+                  d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+                ></path>
+              </svg>
+              ⭐ Selected Additional Projects
+            </h2>
+
+            <div class="projects-grid">
+              <div class="project-item">
+                <h4>DHL — XR brand guidelines & AR/VR Design System</h4>
+                <p>
+                  Spatial UI principles, immersive interaction patterns,
+                  XR-specific brand foundations.
+                </p>
+              </div>
+
+              <div class="project-item">
+                <div class="project-with-logo">
+                  <img
+                    src="/src/assets/brands/EnBw.svg"
+                    alt="EnBW"
+                    class="project-logo"
+                  />
+                  <h4>EnBW — Smart Home App</h4>
+                </div>
+                <p>
+                  Interaction models, device states and automation logic for an
+                  IoT-enabled home environment.
+                </p>
+              </div>
+
+              <div class="project-item">
+                <h4>Seltra — AR terrace planning tool</h4>
+                <p>AR product planning for outdoor spaces.</p>
+              </div>
+
+              <div class="project-item">
+                <h4>E-commerce & brand platforms</h4>
+                <div class="brand-logos-row">
+                  <img
+                    src="/src/assets/brands/Adidas.svg"
+                    alt="Adidas"
+                    class="inline-logo"
+                  />
+                  <img
+                    src="/src/assets/brands/Escada.svg"
+                    alt="Escada"
+                    class="inline-logo"
+                  />
+                  <img
+                    src="/src/assets/brands/HugoBoss.svg"
+                    alt="Hugo Boss"
+                    class="inline-logo"
+                  />
+                  <img
+                    src="/src/assets/brands/Porsche.svg"
+                    alt="Porsche"
+                    class="inline-logo"
+                  />
+                  <img
+                    src="/src/assets/brands/Ebay.svg"
+                    alt="eBay"
+                    class="inline-logo"
+                  />
+                </div>
+              </div>
+
+              <div class="project-item">
+                <h4>Corporate reporting interfaces</h4>
+                <div class="brand-logos-row">
+                  <img
+                    src="/src/assets/brands/Man.svg"
+                    alt="MAN"
+                    class="inline-logo"
+                  />
+                  <img
+                    src="/src/assets/brands/Telefonica.svg"
+                    alt="Telefónica"
+                    class="inline-logo"
+                  />
+                </div>
+              </div>
+
+              <div class="project-item">
+                <div class="project-with-logo">
+                  <img
+                    src="/src/assets/brands/Steigenberger.svg"
+                    alt="Steigenberger"
+                    class="project-logo"
+                  />
+                  <h4>Hotel booking platform</h4>
+                </div>
+                <p>Steigenberger / InterCity Hotels.</p>
+              </div>
+
+              <div class="project-item">
+                <h4>Early digital platforms & brand experiences</h4>
+                <div class="brand-logos-row">
+                  <img
+                    src="/src/assets/brands/PorscheDesign.svg"
+                    alt="Porsche Design"
+                    class="inline-logo"
+                  />
+                  <img
+                    src="/src/assets/brands/Volkswagen.svg"
+                    alt="Volkswagen"
+                    class="inline-logo"
+                  />
+                </div>
+                <p>Porsche Design, Audi A1 launch, Volkswagen Group DRIVE.</p>
+              </div>
+            </div>
+          </section>
+        </FadeIn>
+
+        <FadeIn delay={0.5}>
+          <section class="value-section">
+            <h2>
+              <svg
+                class="icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+              >
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              Value Proposition
+            </h2>
+            <p class="lead">
+              I can quickly understand and structure complex systems, data
+              landscapes and process environments, and translate them into
+              precise, scalable and reliable interfaces.
+            </p>
+            <p>
+              With experience across enterprise platforms, AI-driven automation,
+              Design Systems and data-intensive UX, I design solutions that
+              bridge technical constraints and user needs.
+            </p>
+            <p>
+              This makes me particularly well-suited for projects that integrate
+              devices, data sources, monitoring, control, and intelligent
+              workflows into a coherent and dependable user experience — such as
+              a comprehensive energy management platform.
+            </p>
+          </section>
+        </FadeIn>
+
+        <FadeIn delay={0.6}>
+          <section class="cta-section">
+            <h2>Ready for a new project?</h2>
+            <p class="lead">I'm looking forward to meeting you.</p>
+            <a href="mailto:hello@beringer.io" class="cta-button">
+              Get in touch
+            </a>
+          </section>
+        </FadeIn>
+      </div>
+
+      <Footer />
+    </div>
+  </div>
+
+  <style>
+    /* Theme Variables */
+    :root {
+      --resume-bg: #ffffff;
+      --resume-text: #1a1a1a;
+      --resume-text-muted: #4a4a4a;
+      --resume-border: #e0e0e0;
+      --resume-accent: #2563eb;
+      --resume-shadow: rgba(0, 0, 0, 0.08);
+
+      /* Section Colors */
+      --color-profile: #e8f4f8;
+      --color-bio: #fff4e6;
+      --color-competencies: #e8f5e9;
+      --color-partnerships: #ffe8e8;
+      --color-projects: #f3e8ff;
+      --color-value: #fff0f5;
+    }
+
+    /* Password Gate */
+    .password-gate {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--resume-bg);
+      padding: 2rem;
+    }
+
+    .password-container {
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .password-container h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--resume-text);
+    }
+
+    .password-container p {
+      color: var(--resume-text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    #password-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    #password-input {
+      padding: 0.875rem 1rem;
+      font-size: 1rem;
+      border: 2px solid var(--resume-border);
+      border-radius: 8px;
+      background-color: var(--resume-bg);
+      color: var(--resume-text);
+      transition: border-color 0.2s;
+    }
+
+    #password-input:focus {
+      outline: none;
+      border-color: var(--resume-accent);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    #password-form button {
+      padding: 0.875rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: white;
+      background-color: var(--resume-accent);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    #password-form button:hover {
+      background-color: #1d4ed8;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    }
+
+    .error-message {
+      color: #dc2626;
+      font-size: 0.875rem;
+      margin-top: 0.5rem;
+      min-height: 1.25rem;
+    }
+
+    /* Resume Page */
+    .resume-page {
+      color: var(--resume-text);
+      min-height: 100vh;
+    }
+
+    .resume-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    /* Language Toggle */
+    .language-toggle {
+      position: fixed;
+      top: 6rem;
+      right: 2rem;
+      display: flex;
+      gap: 0.5rem;
+      background-color: var(--resume-card-bg);
+      padding: 0.25rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px var(--resume-shadow);
+      z-index: 100;
+    }
+
+    .lang-btn {
+      padding: 0.5rem 1rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--resume-text-muted);
+      background: transparent;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .lang-btn:hover {
+      color: var(--resume-text);
+      background-color: var(--resume-bg);
+    }
+
+    .lang-btn.active {
+      color: white;
+      background-color: var(--resume-accent);
+    }
+
+    /* Profile Header with Photo */
+    .profile-header {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .profile-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--resume-border);
+      flex-shrink: 0;
+    }
+
+    .profile-title {
+      flex: 1;
+    }
+
+    /* Typography */
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+      color: var(--resume-text);
+    }
+
+    .subtitle {
+      font-size: 1.5rem;
+      color: var(--resume-text-muted);
+      margin-bottom: 0;
+      font-weight: 500;
+    }
+
+    h2 {
+      font-size: 1.75rem;
+      margin-bottom: 1.5rem;
+      margin-top: 3rem;
+      font-weight: 600;
+      color: var(--resume-text);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    h3 {
+      font-size: 1.125rem;
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+      color: var(--resume-text);
+    }
+
+    p {
+      margin-bottom: 1rem;
+      line-height: 1.7;
+      color: var(--resume-text);
+    }
+
+    .lead {
+      font-size: 1.125rem;
+      line-height: 1.7;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+
+    .icon {
+      width: 24px;
+      height: 24px;
+      stroke-width: 2;
+      color: var(--resume-accent);
+      flex-shrink: 0;
+    }
+
+    /* Sections */
+    section {
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--resume-border);
+    }
+
+    section:last-of-type {
+      border-bottom: none;
+    }
+
+    .profile-section,
+    .value-section {
+      padding: 2rem 0;
+      border: none;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      text-align: center;
+      padding: 4rem 0;
+      border: none;
+    }
+
+    .cta-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--resume-text);
+    }
+
+    .cta-section .lead {
+      margin-bottom: 2.5rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: white;
+      background-color: var(--resume-text);
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .cta-button:hover {
+      background-color: var(--resume-accent);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Bio Section */
+    .bio-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .bio-list li {
+      padding: 0.75rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      line-height: 1.6;
+    }
+
+    .bio-list li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--resume-accent);
+      font-weight: bold;
+    }
+
+    /* Partnership Cards */
+    .partnership-card {
+      padding: 2rem 0;
+      margin-bottom: 3rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      transition: all 0.3s;
+    }
+
+    .partnership-card:last-child {
+      border-bottom: none;
+    }
+
+    .partnership-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .partner-logo {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .partnership-subtitle {
+      font-size: 0.9375rem;
+      color: var(--resume-text-muted);
+      margin-top: 0.5rem;
+      line-height: 1.6;
+    }
+
+    .partnership-details {
+      padding-left: 95px;
+    }
+
+    .partnership-details h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--resume-accent);
+    }
+
+    .partnership-details ul {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 1.5rem;
+    }
+
+    .partnership-details li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--resume-border);
+      line-height: 1.6;
+    }
+
+    .partnership-details li:last-child {
+      border-bottom: none;
+    }
+
+    .partnership-summary {
+      font-style: italic;
+      color: var(--resume-text-muted);
+      margin-top: 1rem;
+    }
+
+    /* Selected Projects Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .project-item {
+      padding: 1.5rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      transition: all 0.2s;
+    }
+
+    .project-item:hover {
+      transform: translateX(4px);
+    }
+
+    .project-item h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: var(--resume-text);
+    }
+
+    .project-item p {
+      font-size: 0.875rem;
+      color: var(--resume-text-muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .project-with-logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .project-logo {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .brand-logos-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      margin-top: 0.75rem;
+    }
+
+    .inline-logo {
+      height: 24px;
+      width: auto;
+      object-fit: contain;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+
+    .inline-logo:hover {
+      opacity: 1;
+    }
+
+    /* Competency Grid */
+    .competency-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .competency-card {
+      padding: 1.5rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      transition: all 0.3s;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .competency-card:hover {
+      transform: translateX(4px);
+    }
+
+    .competency-card h3 {
+      font-size: 1.125rem;
+      margin-bottom: 0.5rem;
+      color: var(--resume-accent);
+    }
+
+    .competency-card p {
+      font-size: 0.9375rem;
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
+      flex-grow: 1;
+    }
+
+    /* Brand Pills */
+    .brand-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: auto;
+    }
+
+    .brand-pill {
+      display: inline-block;
+      padding: 0.375rem 0.875rem;
+      background-color: rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      border-radius: 16px;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--resume-text);
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .brand-pill:hover {
+      background-color: rgba(0, 0, 0, 0.9);
+      color: white;
+      border-color: rgba(0, 0, 0, 0.9);
+      transform: translateY(-1px);
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .skill-tag {
+      padding: 0.625rem 1.25rem;
+      background-color: var(--resume-card-bg);
+      border: 1px solid var(--resume-border);
+      border-radius: 20px;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--resume-text);
+      transition: all 0.2s;
+    }
+
+    .skill-tag:hover {
+      background-color: var(--resume-accent);
+      color: white;
+      border-color: var(--resume-accent);
+      transform: translateY(-1px);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .resume-content {
+        padding: 2rem 1.5rem;
+      }
+
+      .language-toggle {
+        top: 5rem;
+        right: 1rem;
+      }
+
+      .profile-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+      }
+
+      .profile-photo {
+        width: 100px;
+        height: 100px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .subtitle {
+        font-size: 1.25rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      .partnership-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .partnership-details {
+        padding-left: 0;
+      }
+
+      .partner-logo {
+        width: 60px;
+        height: 60px;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .competency-category {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .category-icon {
+        width: 60px;
+        height: 60px;
+      }
+
+      .cta-section h2 {
+        font-size: 1.75rem;
+      }
+
+      .cta-button {
+        padding: 0.875rem 2rem;
+        font-size: 1rem;
+      }
+    }
+
+    /* Print Styles */
+    @media print {
+      .language-toggle,
+      .cta-section,
+      footer {
+        display: none !important;
+      }
+
+      .resume-content {
+        max-width: 100%;
+        padding: 0;
+      }
+
+      .password-gate {
+        display: none !important;
+      }
+
+      #resume-content {
+        display: block !important;
+      }
+
+      .profile-header {
+        margin-bottom: 2rem;
+      }
+
+      .profile-photo {
+        width: 80px;
+        height: 80px;
+        border-width: 2px;
+      }
+
+      h1 {
+        font-size: 1.75rem;
+        page-break-after: avoid;
+      }
+
+      .subtitle {
+        font-size: 1.125rem;
+      }
+
+      h2 {
+        font-size: 1.25rem;
+        page-break-after: avoid;
+        margin-top: 1.5rem;
+      }
+
+      section {
+        page-break-inside: avoid;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+      }
+
+      .competency-card,
+      .project-list li {
+        page-break-inside: avoid;
+      }
+
+      .competency-grid {
+        gap: 1rem;
+      }
+
+      .resume-page {
+        background-color: white !important;
+      }
+
+      .competency-card,
+      .project-list li,
+      .skill-tag {
+        box-shadow: none;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+    }
+
+    /* Global overrides for resume theme */
+    body.resume-theme {
+      background-color: var(--resume-bg);
+      color: var(--resume-text) !important;
+      transition: background-color 0.6s ease !important;
+    }
+
+    body.resume-theme h1,
+    body.resume-theme h2,
+    body.resume-theme h3,
+    body.resume-theme p,
+    body.resume-theme li {
+      color: inherit;
+    }
+  </style>
+
+  <script>
+    // Password protection configuration
+    const PASSWORD = "resume2025"; // Change this to your desired password
+    const SESSION_KEY = "resume_authenticated";
+
+    // Check if already authenticated
+    const isAuthenticated = sessionStorage.getItem(SESSION_KEY) === "true";
+
+    if (isAuthenticated) {
+      showContent();
+    }
+
+    // Handle password form submission
+    const form = document.getElementById("password-form") as HTMLFormElement;
+    const input = document.getElementById("password-input") as HTMLInputElement;
+    const errorMessage = document.getElementById(
+      "error-message"
+    ) as HTMLElement;
+
+    form?.addEventListener("submit", (e: Event) => {
+      e.preventDefault();
+      const enteredPassword = input?.value || "";
+
+      if (enteredPassword === PASSWORD) {
+        sessionStorage.setItem(SESSION_KEY, "true");
+        showContent();
+      } else {
+        errorMessage.textContent = "Incorrect password. Please try again.";
+        input.value = "";
+        input.focus();
+      }
+    });
+
+    function showContent() {
+      const gate = document.getElementById("password-gate");
+      const content = document.getElementById("resume-content");
+
+      if (gate && content) {
+        gate.style.display = "none";
+        content.style.display = "block";
+      }
+    }
+
+    // Language toggle
+    const langDE = document.getElementById("lang-de");
+    const langEN = document.getElementById("lang-en");
+    const contentDE = document.getElementById("content-de");
+    const contentEN = document.getElementById("content-en");
+
+    langDE?.addEventListener("click", () => {
+      langDE.classList.add("active");
+      langEN?.classList.remove("active");
+      if (contentDE && contentEN) {
+        contentDE.style.display = "block";
+        contentEN.style.display = "none";
+        // Refresh ScrollTrigger to update positions
+        ScrollTrigger.refresh();
+      }
+    });
+
+    langEN?.addEventListener("click", () => {
+      langEN.classList.add("active");
+      langDE?.classList.remove("active");
+      if (contentDE && contentEN) {
+        contentDE.style.display = "none";
+        contentEN.style.display = "block";
+        // Refresh ScrollTrigger to update positions
+        ScrollTrigger.refresh();
+      }
+    });
+
+    // GSAP Animations for Competency Icons
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Animate Systems Icon (Network nodes pulsing)
+    const animateSystems = (iconId: string) => {
+      const icon = document.getElementById(iconId);
+      if (!icon) return;
+
+      const circles = icon.querySelectorAll("circle");
+      const lines = icon.querySelectorAll("line");
+
+      gsap.fromTo(
+        circles,
+        { scale: 0.8, transformOrigin: "center" },
+        {
+          scale: 1,
+          duration: 1.5,
+          ease: "power2.inOut",
+          stagger: 0.1,
+          repeat: -1,
+          yoyo: true,
+          scrollTrigger: {
+            trigger: icon,
+            start: "top 80%",
+            end: "bottom 20%",
+          },
+        }
+      );
+
+      gsap.fromTo(
+        lines,
+        { opacity: 0.3 },
+        {
+          opacity: 1,
+          duration: 1,
+          ease: "sine.inOut",
+          stagger: 0.15,
+          repeat: -1,
+          yoyo: true,
+        }
+      );
+    };
+
+    // Animate Data Icon (Charts growing)
+    const animateData = (iconId: string) => {
+      const icon = document.getElementById(iconId);
+      if (!icon) return;
+
+      const bars = icon.querySelectorAll("rect");
+      const line = icon.querySelector("polyline");
+
+      gsap.from(bars, {
+        scaleY: 0,
+        transformOrigin: "bottom",
+        duration: 1.2,
+        ease: "elastic.out(1, 0.5)",
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: icon,
+          start: "top 80%",
+        },
+      });
+
+      if (line) {
+        gsap.fromTo(
+          line,
+          { strokeDasharray: 200, strokeDashoffset: 200 },
+          {
+            strokeDashoffset: 0,
+            duration: 1.5,
+            ease: "power2.out",
+            delay: 0.5,
+            scrollTrigger: {
+              trigger: icon,
+              start: "top 80%",
+            },
+          }
+        );
+      }
+    };
+
+    // Animate Interface Icon (Window loading)
+    const animateInterface = (iconId: string) => {
+      const icon = document.getElementById(iconId);
+      if (!icon) return;
+
+      const window = icon.querySelector("rect[rx]");
+      const line = icon.querySelector("line");
+      const circles = icon.querySelectorAll("circle");
+      const rects = icon.querySelectorAll('rect:not([rx="4"])');
+
+      gsap.from(window, {
+        scale: 0,
+        transformOrigin: "center",
+        duration: 0.6,
+        ease: "back.out(1.5)",
+        scrollTrigger: {
+          trigger: icon,
+          start: "top 80%",
+        },
+      });
+
+      gsap.from(circles, {
+        scale: 0,
+        transformOrigin: "center",
+        duration: 0.4,
+        stagger: 0.1,
+        delay: 0.6,
+        ease: "back.out(2)",
+        scrollTrigger: {
+          trigger: icon,
+          start: "top 80%",
+        },
+      });
+
+      gsap.from(rects, {
+        scaleX: 0,
+        transformOrigin: "left",
+        duration: 0.5,
+        stagger: 0.15,
+        delay: 0.9,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: icon,
+          start: "top 80%",
+        },
+      });
+    };
+
+    // Animate Tech Icon (Code typing)
+    const animateTech = (iconId: string) => {
+      const icon = document.getElementById(iconId);
+      if (!icon) return;
+
+      const polylines = icon.querySelectorAll("polyline");
+      const line = icon.querySelector("line");
+      const rect = icon.querySelector("rect");
+
+      gsap.from(rect, {
+        scaleY: 0,
+        transformOrigin: "top",
+        duration: 0.6,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: icon,
+          start: "top 80%",
+        },
+      });
+
+      gsap.fromTo(
+        polylines,
+        { strokeDasharray: 50, strokeDashoffset: 50 },
+        {
+          strokeDashoffset: 0,
+          duration: 0.8,
+          stagger: 0.2,
+          delay: 0.3,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: icon,
+            start: "top 80%",
+          },
+        }
+      );
+
+      gsap.from(line, {
+        scaleX: 0,
+        transformOrigin: "left",
+        duration: 0.6,
+        delay: 0.5,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: icon,
+          start: "top 80%",
+        },
+      });
+    };
+
+    // Animate Product Icon (Flowchart building)
+    const animateProduct = (iconId: string) => {
+      const icon = document.getElementById(iconId);
+      if (!icon) return;
+
+      const circles = icon.querySelectorAll("circle");
+      const paths = icon.querySelectorAll("path");
+      const polyline = icon.querySelector("polyline");
+
+      gsap.from(circles[0], {
+        scale: 0,
+        transformOrigin: "center",
+        duration: 0.5,
+        ease: "back.out(2)",
+        scrollTrigger: {
+          trigger: icon,
+          start: "top 80%",
+        },
+      });
+
+      gsap.fromTo(
+        paths,
+        { strokeDasharray: 50, strokeDashoffset: 50 },
+        {
+          strokeDashoffset: 0,
+          duration: 0.6,
+          stagger: 0.15,
+          delay: 0.5,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: icon,
+            start: "top 80%",
+          },
+        }
+      );
+
+      gsap.from([circles[1], circles[2]], {
+        scale: 0,
+        transformOrigin: "center",
+        duration: 0.5,
+        stagger: 0.1,
+        delay: 1,
+        ease: "back.out(2)",
+        scrollTrigger: {
+          trigger: icon,
+          start: "top 80%",
+        },
+      });
+
+      if (polyline) {
+        gsap.from(polyline, {
+          scale: 0,
+          transformOrigin: "center",
+          duration: 0.4,
+          delay: 0.3,
+          ease: "back.out(2)",
+          scrollTrigger: {
+            trigger: icon,
+            start: "top 80%",
+          },
+        });
+      }
+    };
+
+    // Initialize animations when content is shown
+    function initAnimations() {
+      setTimeout(() => {
+        animateSystems("systems-icon-de");
+        animateData("data-icon-de");
+        animateInterface("interface-icon-de");
+        animateTech("tech-icon-de");
+        animateProduct("product-icon-de");
+
+        animateSystems("systems-icon-en");
+        animateData("data-icon-en");
+        animateInterface("interface-icon-en");
+        animateTech("tech-icon-en");
+        animateProduct("product-icon-en");
+      }, 100);
+    }
+
+    // Scroll-triggered background color animations
+    function initScrollColors() {
+      // Get all main sections (both DE and EN)
+      const sections = [
+        { selector: ".profile-section", color: "var(--color-profile)" },
+        { selector: ".bio-section", color: "var(--color-bio)" },
+        {
+          selector: ".competencies-section",
+          color: "var(--color-competencies)",
+        },
+        {
+          selector: ".partnerships-section",
+          color: "var(--color-partnerships)",
+        },
+        {
+          selector: ".selected-projects-section",
+          color: "var(--color-projects)",
+        },
+        { selector: ".value-section", color: "var(--color-value)" },
+        { selector: ".cta-section", color: "var(--color-value)" },
+      ];
+
+      sections.forEach(({ selector, color }) => {
+        // Get all sections matching selector (both DE and EN)
+        const sectionElements = document.querySelectorAll(selector);
+
+        sectionElements.forEach((section) => {
+          ScrollTrigger.create({
+            trigger: section,
+            start: "top 60%",
+            end: "bottom 40%",
+            onEnter: () => {
+              // Only animate if this section is visible
+              const parentContent = section.closest(".language-content");
+              if (parentContent && parentContent.style.display !== "none") {
+                gsap.to(document.body, {
+                  backgroundColor: color,
+                  duration: 0.6,
+                  ease: "power2.out",
+                });
+              }
+            },
+            onEnterBack: () => {
+              // Only animate if this section is visible
+              const parentContent = section.closest(".language-content");
+              if (parentContent && parentContent.style.display !== "none") {
+                gsap.to(document.body, {
+                  backgroundColor: color,
+                  duration: 0.6,
+                  ease: "power2.out",
+                });
+              }
+            },
+          });
+        });
+      });
+    }
+
+    // Initialize animations after content is shown
+    if (isAuthenticated) {
+      initAnimations();
+      initScrollColors();
+    } else {
+      // Initialize after password is entered
+      const originalShowContent = showContent;
+      showContent = function () {
+        originalShowContent();
+        initAnimations();
+        initScrollColors();
+      };
+    }
+  </script>
+</Layout>
